@@ -45,5 +45,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-- PAKUTASO
-- https://www.pakutaso.com/20200610153ibus-45.html
+- PAKUTASO    https://www.pakutaso.com/news.html
