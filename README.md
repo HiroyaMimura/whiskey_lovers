@@ -45,4 +45,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-- PAKUTASO    https://www.pakutaso.com/news.html
+- PAKUTASO : https://www.pakutaso.com/news.html
