@@ -1,2 +1,41 @@
-<h1>Public::Whiskeys#new</h1>
-<p>Find me in app/views/public/whiskeys/new.html.erb</p>
+<h1>新規投稿</h1>
+
+<%= form_with model: @whiskey, url: user_session_path, local: true do |f| %>
+<%= f.label :"写真" %>
+<%= f.file_field :whiskey_image, accept: 'image/*' %>
+<%= f.label :"銘柄" %>
+<%= f.text_field :name %>
+<%= f.label :"感想" %>
+<%= f.text_area :impression %>
+<%= f.label :"味わい" %>
+<p>ライト</p>
+<%= f.range_field :taste %>
+<p>リッチ</p>
+<%= f.label :"香り" %>
+<p>フルーティー</p>
+<%= f.range_field :scent %>
+<p>スモーキー</p>
+<%= f.label :"価格帯" %>
+<%= f.select :price_range, options_for_select([["〜2000円"],["2000円〜4000円"],["4000円〜6000円"],["6000円〜8000円"],["8000円〜10000円"],["10000円〜"]]) %>
+<div id="star">
+  <%= f.label :"コストパフォーマンス" %>
+  <%= f.hidden_field :performance, id: :review_star, class:'form-control' %>
+  <div id="post_raty"></div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    let raty_elem = document.querySelector('#post_raty');
+    raty_elem.innerHTML = ""
+    let option = {
+      starOff: "<%= asset_path('star-off.png') %>",
+      starOn: "<%= asset_path('star-on.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      half: true,
+      scoreName: 'whiskey[score]',
+    };
+    raty(raty_elem,option);
+  });
+  </script>
+<%= f.submit :"投稿する" %>
+<% end %>

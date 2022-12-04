@@ -12,6 +12,6 @@ class Public::UsersController < ApplicationController
   end
   
   def withdrawal
-    
+  end
   
 end
