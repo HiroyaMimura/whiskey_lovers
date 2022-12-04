@@ -1,6 +1,8 @@
 <h1>新規投稿</h1>
 
-<%= form_with model: @whiskey, url: user_session_path, local: true do |f| %>
+<%= flash[:notice] %>
+
+<%= form_with model: @whiskey, url: whiskeys_path, method: :post, local: true do |f| %>
 <%= f.label :"写真" %>
 <%= f.file_field :whiskey_image, accept: 'image/*' %>
 <%= f.label :"銘柄" %>
@@ -32,7 +34,7 @@
       starOn: "<%= asset_path('star-on.png') %>",
       starHalf: "<%= asset_path('star-half.png') %>",
       half: true,
-      scoreName: 'whiskey[score]',
+      scoreName: 'whiskey[performance]',
     };
     raty(raty_elem,option);
   });

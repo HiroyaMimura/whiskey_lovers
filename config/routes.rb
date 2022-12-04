@@ -9,13 +9,17 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+devise_scope :user do
+  post 'users/guest_sign_in'=>'public/sessions#guest_sign_in'
+end
+
 scope module: :public do
 	root to:"homes#top"
   resources:whiskeys
   get "searches"=>"searches#index"
   resources:users, only: [:show,:edit,:update]
-  get "customers/unsubscribe"=>"customers#unsubscribe"
-  patch "customers/withdrawal"=>"customers#withdrawal"
+  get "users/unsubscribe"=>"users#unsubscribe"
+  patch "users/withdrawal"=>"users#withdrawal"
 end
 
 namespace :admin do
