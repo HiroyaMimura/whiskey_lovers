@@ -1,0 +1,2 @@
+class WhiskeyComment < ApplicationRecord
+end
