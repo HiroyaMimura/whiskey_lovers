@@ -114,8 +114,8 @@ ja:
       already_signed_out: 既にログアウト済みです。
       new:
         sign_in: ログイン
-      signed_in: ログインしました。
-      signed_out: ログアウトしました。
+        signed_in: ログインしました
+        signed_out: ログアウトしました
     shared:
       links:
         back: 戻る
@@ -142,3 +142,10 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため保存できませんでした。"
+ja:
+  activerecord:
+    attributes:
+      whiskey:
+        name: 銘柄
+        whiskey_image: 写真
+        impression: 感想

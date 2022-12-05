@@ -1,3 +1,36 @@
 <%= flash[:notice] %>
-<h1>Public::Whiskeys#index</h1>
-<p>Find me in app/views/public/whiskeys/index.html.erb</p>
+
+<h1>レビュー</h1>
+
+<% @whiskeys.each do |whiskey| %>
+
+<%= link_to whiskey_path(whiskey) do %>
+ <%= image_tag whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
+<% end %>
+
+<%= whiskey.user.name %>
+
+<%= whiskey.name %>
+
+<%= whiskey.impression %>
+
+<%= whiskey.price_range %>
+
+<p>ライト</p>
+  <div class="graph">
+    <div style="padding-left: <%= whiskey.taste %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>リッチ</p>
+
+<p>フルーティー</p>
+  <div class="graph">
+    <div style="padding-left: <%= whiskey.scent %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>スモーキー</p>
+
+<p>コスパ</p>
+<%= render "rate", whiskey: whiskey %>
+
+<% end %>

@@ -1,2 +1,35 @@
-<h1>Public::Whiskeys#show</h1>
-<p>Find me in app/views/public/whiskeys/show.html.erb</p>
+<%= @whiskey.user.name %>
+
+<%= image_tag @whiskey.user.get_profile_image, size:"100x100", alt: "ユーザーの写真" %>
+
+<%= image_tag @whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
+
+<%= @whiskey.name %>
+
+<%= @whiskey.impression %>
+
+<%= @whiskey.price_range %>
+
+<p>ライト</p>
+  <div class="graph">
+    <div style="padding-left: <%= @whiskey.taste %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>リッチ</p>
+
+<p>フルーティー</p>
+  <div class="graph">
+    <div style="padding-left: <%= @whiskey.scent %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>スモーキー</p>
+
+<p>コスパ</p>
+<%= render "rate", whiskey: @whiskey %>
+
+<%= form_with model: [@whiskey, @whiskey_comment], local: false do |f| %>
+  <%= f.text_area :comment, size: "80x5", placeholder: "コメントはここに" %>
+  <%= f.submit "送信" %>
+<% end %>
+
+<%= render "public/whiskey_comments/comments", whiskey: @whiskey %>

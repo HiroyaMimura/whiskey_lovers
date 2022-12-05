@@ -21,3 +21,16 @@
   font-size: 30px;
 }
 
+.graph {
+  height: 15px;
+  width: 270px;
+  background-color: #e9d9cf;
+  border-radius: 5px;
+  display: flex;
+}
+.point {
+  background-color: #683e1b;
+  width: 20px;
+  height: 100%;
+  border-radius: 5px;
+}

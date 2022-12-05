@@ -1,11 +1,15 @@
 class Public::WhiskeysController < ApplicationController
   def index
+    @whiskeys = Whiskey.all
   end
 
   def show
+    @whiskey = Whiskey.find(params[:id])
+    @whiskey_comment = WhiskeyComment.new
   end
 
   def new
+    @whiskey = Whiskey.new
   end
 
   def edit
@@ -17,8 +21,7 @@ class Public::WhiskeysController < ApplicationController
     if @whiskey.save
       redirect_to whiskeys_path
     else
-      flash[:notice] = "全て入力してください"
-      redirect_to new_whiskey_path
+      render "new"
     end
   end
 
@@ -31,7 +34,7 @@ class Public::WhiskeysController < ApplicationController
   private
 
   def whiskey_params
-    params.require(:whiskey).permit(:name,:impression,:whiskey_image,:performance)
+    params.require(:whiskey).permit(:name,:impression,:whiskey_image,:taste,:scent,:price_range,:performance)
   end
 
 end

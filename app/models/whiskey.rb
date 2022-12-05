@@ -6,11 +6,10 @@ class Whiskey < ApplicationRecord
   has_many :whiskey_tags, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :name, length: { minimum: 2, maximum: 30 }, uniqueness: true
-  validates :impression, length: { maximum: 80 }
-  validates :whiskey_image, presence:true
-  validates :performance, presence:true
-  
+  validates :name, length: { maximum: 30 }, presence: true
+  validates :impression, length: { maximum: 150 }, presence: true
+  validates :whiskey_image, presence: true
+
 
   def self.looks(word)
     if @whiskey = Whiskey.where("name LIKE?","%#{word}%")

@@ -1,0 +1,15 @@
+<div id="rate_<%= whiskey.id %>"></div>
+  <script>
+  $(document).ready(function(){
+    let raty_<%= whiskey.id %> = document.querySelector('#rate_<%= whiskey.id %>');
+    rate_<%= whiskey.id %>.innerHTML = ""
+    let option_<%= whiskey.id %> = {
+    starOff:  "<%= asset_path('star-off.png') %>",
+    starOn : "<%= asset_path('star-on.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    readOnly: true,
+    score: "<%= whiskey.performance %>",
+    };
+    raty(raty_<%= whiskey.id %>,option_<%= whiskey.id %>);
+  });
+  </script>
