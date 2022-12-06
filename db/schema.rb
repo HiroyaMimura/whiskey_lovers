@@ -90,10 +90,13 @@ ActiveRecord::Schema.define(version: 2022_12_04_041713) do
   end
 
   create_table "whiskey_tags", force: :cascade do |t|
-    t.integer "tag_id", null: false
     t.integer "whiskey_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_whiskey_tags_on_tag_id"
+    t.index ["whiskey_id", "tag_id"], name: "index_whiskey_tags_on_whiskey_id_and_tag_id", unique: true
+    t.index ["whiskey_id"], name: "index_whiskey_tags_on_whiskey_id"
   end
 
   create_table "whiskeys", force: :cascade do |t|
@@ -112,4 +115,6 @@ ActiveRecord::Schema.define(version: 2022_12_04_041713) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "users"
   add_foreign_key "favorites", "whiskeys"
+  add_foreign_key "whiskey_tags", "tags"
+  add_foreign_key "whiskey_tags", "whiskeys"
 end

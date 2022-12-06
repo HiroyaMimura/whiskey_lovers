@@ -1,5 +1,5 @@
 <% whiskey.whiskey_comments.each do |comment| %>
-  <%= image_tag comment.user.get_profile_image, size:"100x100" %><br>
+  <%= image_tag comment.user.get_profile_image, size:"80x80" %><br>
   <%= comment.user.name %>
   <%= comment.comment %>
   <% if comment.user == current_user %>

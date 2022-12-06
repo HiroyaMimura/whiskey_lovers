@@ -5,6 +5,7 @@ ja:
         name: 銘柄
         whiskey_image: 写真
         impression: 感想
+        performance: コストパフォーマンス
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

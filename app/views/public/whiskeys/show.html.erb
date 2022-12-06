@@ -1,6 +1,6 @@
-<%= @whiskey.user.name %>
+<%= image_tag @whiskey.user.get_profile_image, size:"80x80", alt: "ユーザーの写真" %>
 
-<%= image_tag @whiskey.user.get_profile_image, size:"100x100", alt: "ユーザーの写真" %>
+<%= @whiskey.user.name %>
 
 <%= image_tag @whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
 
@@ -24,12 +24,18 @@
   </div>
 <p>スモーキー</p>
 
-<p>コスパ</p>
+<p>コストパフォーマンス</p>
 <%= render "rate", whiskey: @whiskey %>
 
 <div id="favorite_buttons_<%= @whiskey.id %>">
   <%= render "public/favorites/favorites", whiskey: @whiskey %>
 </div>
+
+<% if @whiskey.tags.nil? %>
+  <%= "タグはありません" %>
+<% else %>
+  <%= @whiskey.tags.map(&:tag).join(',') %>
+<% end %>
 
 <% if @whiskey.user == current_user %>
   <%= link_to '編集', edit_whiskey_path(@whiskey), class: "btn btn-sm btn-success" %>

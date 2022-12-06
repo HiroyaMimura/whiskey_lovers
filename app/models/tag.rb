@@ -1,14 +1,16 @@
 class Tag < ApplicationRecord
-  
+
   has_many :whiskey_tags, dependent: :destroy
-  
-  validates :tag, length: { minimum: 2, maximum: 10 }, uniqueness: true
-  
+  # タグは複数の投稿を持つので、whiskey_tagsを通じて参照できる
+  has_many :whiskeys, through: :whiskey_tags, dependent: :destroy
+  # uniquenessはオブジェクトが保存される直前に、属性の値が一意であり重複していないことを検証する
+  validates :tag, length: { maximum: 50 }, uniqueness: true
+
   def self.looks(word)
     if @tag = Tag.where("tagLIKE?","%#{word}%")
     else
       @tag = Whiskey.all
     end
   end
-  
+
 end

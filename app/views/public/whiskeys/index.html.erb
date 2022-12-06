@@ -12,8 +12,6 @@
 
 <%= whiskey.name %>
 
-<%= whiskey.impression %>
-
 <%= whiskey.price_range %>
 
 <p>ライト</p>
@@ -30,8 +28,14 @@
   </div>
 <p>スモーキー</p>
 
-<p>コスパ</p>
+<p>コストパフォーマンス</p>
 <%= render "rate", whiskey: whiskey %>
+
+<% if whiskey.tags.nil? %>
+  <%= "タグはありません" %>
+<% else %>
+  <%= whiskey.tags.map(&:tag).join(',') %>
+<% end %>
 
 <div id="favorite_buttons_<%= whiskey.id %>">
   <%= render "public/favorites/favorites", whiskey: whiskey %>
