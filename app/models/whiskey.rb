@@ -21,5 +21,9 @@ class Whiskey < ApplicationRecord
   def self.looks(price)
     @whiskey = Whiskey.where("price_range LIKE?", "#{price}")
   end
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 
 end

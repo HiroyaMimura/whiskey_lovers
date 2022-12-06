@@ -10,12 +10,16 @@ class User < ApplicationRecord
   has_many :whiskey_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  # def get_profile_image
+  #   unless profile_image.attached?
+  #     file_path = Rails.root.join('app/assets/images/no_image.jpg')
+  #     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+  #   end
+  #     profile_image
+  # end
+  
   def get_profile_image
-    unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end
-      profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
   def self.guest

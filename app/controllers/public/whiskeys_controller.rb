@@ -1,4 +1,6 @@
 class Public::WhiskeysController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @whiskeys = Whiskey.all
   end
@@ -13,6 +15,7 @@ class Public::WhiskeysController < ApplicationController
   end
 
   def edit
+    @whiskey = Whiskey.find(params[:id])
   end
 
   def create
@@ -26,9 +29,18 @@ class Public::WhiskeysController < ApplicationController
   end
 
   def update
+    @whiskey = Whiskey.find(params[:id])
+    if @whiskey.update(whiskey_params)
+      redirect_to whiskey_path(whiskey)
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    @whiskey = Whiskey.find(params[:id])
+    @whiskey.destroy
+    redirect_to whiskeys_path
   end
 
   private

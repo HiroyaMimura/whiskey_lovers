@@ -27,9 +27,20 @@
 <p>コスパ</p>
 <%= render "rate", whiskey: @whiskey %>
 
+<div id="favorite_buttons_<%= @whiskey.id %>">
+  <%= render "public/favorites/favorites", whiskey: @whiskey %>
+</div>
+
+<% if @whiskey.user == current_user %>
+  <%= link_to '編集', edit_whiskey_path(@whiskey), class: "btn btn-sm btn-success" %>
+  <%= link_to '削除', @whiskey, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+<% end %>
+
 <%= form_with model: [@whiskey, @whiskey_comment], local: false do |f| %>
   <%= f.text_area :comment, size: "80x5", placeholder: "コメントはここに" %>
   <%= f.submit "送信" %>
 <% end %>
 
-<%= render "public/whiskey_comments/comments", whiskey: @whiskey %>
+<div id="comments_area">
+  <%= render "public/whiskey_comments/comments", whiskey: @whiskey %>
+</div>

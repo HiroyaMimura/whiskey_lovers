@@ -2,6 +2,7 @@ ja:
   activerecord:
     attributes:
       user:
+        name: ニックネーム
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -9,7 +10,6 @@ ja:
         current_password: 現在のパスワード
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
-        name: ニックネーム
         email: メールアドレス
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
@@ -140,12 +140,5 @@ ja:
       not_found: は見つかりませんでした。
       not_locked: はロックされていません。
       not_saved:
-        one: エラーが発生したため %{resource} は保存されませんでした。
-        other: "%{count} 件のエラーが発生したため保存できませんでした。"
-ja:
-  activerecord:
-    attributes:
-      whiskey:
-        name: 銘柄
-        whiskey_image: 写真
-        impression: 感想
+        one: エラーが発生したため%{resource}は保存されませんでした。
+        other: "%{count}件のエラーが発生したため保存できませんでした。"

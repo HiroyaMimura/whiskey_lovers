@@ -1,4 +1,5 @@
 class Public::WhiskeyCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @whiskey = Whiskey.find(params[:whiskey_id])
@@ -7,19 +8,17 @@ class Public::WhiskeyCommentsController < ApplicationController
     # コメント投稿者(user)のidを代入
     @whiskey_comment.user_id = current_user.id
     @whiskey_comment.save
-    render "public/whiskey_comments/create"
   end
 
   def destroy
     @whiskey = Whiskey.find(params[:whiskey_id])
     @whiskey_comment = WhiskeyComment.find(params[:id])
     @whiskey_comment.destroy
-    render "public/whiskey_comments/destroy"
   end
 
   private
     def comment_params
-      params.require(:whiskey_comment).permit(:comment, :user_id, :whiskey_id)
+      params.require(:whiskey_comment).permit(:comment)
     end
 
 end

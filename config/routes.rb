@@ -17,6 +17,7 @@ scope module: :public do
 	root to:"homes#top"
   resources:whiskeys do
     resources:whiskey_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
   get "searches"=>"searches#index"
   resources:users, only: [:show,:edit,:update]
