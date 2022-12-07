@@ -35,13 +35,13 @@
 
 <% if @whiskey.id == nil %>
   <%= f.label :"価格帯" %>
-  <%= f.select :price_range, @price_ranges %>
+  <%= f.select :price_range, [["〜2000円","〜2000円"],["2000円〜4000円","2000円〜4000円"],["4000円〜6000円","4000円〜6000円"],["6000円〜8000円","6000円〜8000円"],["8000円〜10000円","8000円〜10000円"],["10000円〜","10000円〜"]] %>
   
   <%= f.label :"タグ" %>
   <%= f.text_field :tag, placeholder:",で区切ると複数のタグを登録できます", size: "40x5" %>
 <% else %>
   <%= f.label :"価格帯" %>
-  <%= f.select :price_range, @price_ranges, {include_blank: @whiskey.price_range} %>
+  <%= f.select :price_range, [["〜2000円","〜2000円"],["2000円〜4000円","2000円〜4000円"],["4000円〜6000円","4000円〜6000円"],["6000円〜8000円","6000円〜8000円"],["8000円〜10000円","8000円〜10000円"],["10000円〜","10000円〜"]], {include_blank: @whiskey.price_range} %>
 
   <%= f.label :"タグ" %>
   <%= f.text_field :tag, value: @tag_list, size: "50x5" %>

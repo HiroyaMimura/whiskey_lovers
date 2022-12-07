@@ -6,11 +6,5 @@ class Tag < ApplicationRecord
   # uniquenessはオブジェクトが保存される直前に、属性の値が一意であり重複していないことを検証する
   validates :tag, length: { maximum: 50 }, uniqueness: true
 
-  def self.looks(word)
-    if @tag = Tag.where("tagLIKE?","%#{word}%")
-    else
-      @tag = Whiskey.all
-    end
-  end
 
 end

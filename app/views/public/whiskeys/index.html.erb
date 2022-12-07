@@ -1,6 +1,12 @@
 <%= flash[:notice] %>
 
-<h1>レビュー</h1>
+<div>タグ検索</div>
+<% @tag_list.each do |list|%>
+  <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
+  <%="(#{list.whiskeys.count})" %>
+<% end %>
+
+<h1>投稿一覧</h1>
 
 <% @whiskeys.each do |whiskey| %>
 

@@ -17,9 +17,11 @@ scope module: :public do
 	root to:"homes#top"
   resources:whiskeys do
     resources:whiskey_comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
+    resource:favorites, only: [:create, :destroy]
   end
-  get "searches"=>"searches#index"
+  get "searches_name"=>"searches#searches_name"
+  get "searches_tag"=>"searches#searches_tag"
+  get "searches_price"=>"searches#searches_price"
   resources:users, only: [:show,:edit,:update]
   get "users/unsubscribe"=>"users#unsubscribe"
   patch "users/withdrawal"=>"users#withdrawal"
