@@ -1,13 +1,17 @@
 <%= image_tag @whiskey.user.get_profile_image, size:"80x80", alt: "ユーザーの写真" %>
 
+<div>投稿者</div>
 <%= @whiskey.user.name %>
 
 <%= image_tag @whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
 
+<div>銘柄</div>
 <%= @whiskey.name %>
 
+<div>感想</div>
 <%= @whiskey.impression %>
 
+<div>価格帯</div>
 <%= @whiskey.price_range %>
 
 <p>ライト</p>
@@ -31,10 +35,11 @@
   <%= render "public/favorites/favorites", whiskey: @whiskey %>
 </div>
 
-<% if @whiskey.tags.nil? %>
+<p>タグ</p>
+<% if @whiskey.tags.blank? %>
   <%= "タグはありません" %>
 <% else %>
-  <%= @whiskey.tags.map(&:tag).join(',') %>
+ #<%= @whiskey.tags.map(&:tag).join(' #') %>
 <% end %>
 
 <% if @whiskey.user == current_user %>

@@ -8,10 +8,13 @@
  <%= image_tag whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
 <% end %>
 
+<div>投稿者</div>
 <%= whiskey.user.name %>
 
+<div>銘柄</div>
 <%= whiskey.name %>
 
+<div>価格帯</div>
 <%= whiskey.price_range %>
 
 <p>ライト</p>
@@ -31,10 +34,11 @@
 <p>コストパフォーマンス</p>
 <%= render "rate", whiskey: whiskey %>
 
-<% if whiskey.tags.nil? %>
+<p>タグ</p>
+<% if whiskey.tags.blank? %>
   <%= "タグはありません" %>
 <% else %>
-  <%= whiskey.tags.map(&:tag).join(',') %>
+ #<%= whiskey.tags.map(&:tag).join(' #') %>
 <% end %>
 
 <div id="favorite_buttons_<%= whiskey.id %>">

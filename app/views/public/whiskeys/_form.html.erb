@@ -7,10 +7,15 @@
   </ul>
 <% end %>
 
-<%= form_with model: whiskey, url: whiskeys_path, method: :post, local: true do |f| %>
+<%= form_with model: whiskey, local: true do |f| %>
 
-<%= f.label :"写真" %>
-<%= f.file_field :whiskey_image, accept: 'image/*' %>
+<% if @whiskey.id == nil %>
+  <%= f.label :"写真" %>
+  <%= f.file_field :whiskey_image, value: @whiskey.whiskey_image, accept: 'image/*' %>
+<% else %>
+  <%= f.label :"写真を変更する場合は選択してください" %>
+  <%= f.file_field :whiskey_image, value: @whiskey.whiskey_image, accept: 'image/*' %>
+<% end %>
 
 <%= f.label :"銘柄" %>
 <%= f.text_field :name %>
@@ -28,8 +33,19 @@
 <%= f.range_field :scent, in: 0..250 %>
 <p>スモーキー</p>
 
-<%= f.label :"価格帯" %>
-<%= f.select :price_range, options_for_select([["〜2000円","〜2000円"],["2000円〜4000円","2000円〜4000円"],["4000円〜6000円","4000円〜6000円"],["6000円〜8000円","6000円〜8000円"],["8000円〜10000円","8000円〜10000円"],["10000円〜","10000円〜"]]) %>
+<% if @whiskey.id == nil %>
+  <%= f.label :"価格帯" %>
+  <%= f.select :price_range, @price_ranges %>
+  
+  <%= f.label :"タグ" %>
+  <%= f.text_field :tag, placeholder:",で区切ると複数のタグを登録できます", size: "40x5" %>
+<% else %>
+  <%= f.label :"価格帯" %>
+  <%= f.select :price_range, @price_ranges, {include_blank: @whiskey.price_range} %>
+
+  <%= f.label :"タグ" %>
+  <%= f.text_field :tag, value: @tag_list, size: "50x5" %>
+<% end %>
 
 <div id="star">
   <%= f.label :"コストパフォーマンス" %>
@@ -50,14 +66,6 @@
     raty(raty_elem,option);
   });
   </script>
-
-  <% if @whiskey.id == nil %>
-    <%= f.label :"タグ" %>
-    <%= f.text_field :tag, placeholder:",で区切ると複数のタグを登録できます", size: "50x5" %>
-  <% else %>
-    <%= f.label :"タグ" %>
-    <%= f.text_field :tag, value: @tag_list, size: "50x5" %>
-  <% end %>
 
   <%= f.submit %>
 <% end %>

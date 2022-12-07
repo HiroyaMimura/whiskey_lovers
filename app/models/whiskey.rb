@@ -12,7 +12,6 @@ class Whiskey < ApplicationRecord
   validates :whiskey_image, presence: true
   validates :performance, presence: true
 
-
   def self.looks(word)
     if @whiskey = Whiskey.where("name LIKE?","%#{word}%")
     else
