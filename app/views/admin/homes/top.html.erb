@@ -1,16 +1,16 @@
 <%= flash[:notice] %>
 
-<div>タグ検索</div>
+<div>タグ一覧</div>
 <% @tag_list.each do |list|%>
-  <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
-  <%="(#{list.whiskeys.count})" %>
+  <%= list.tag %>
+  <%= "(#{list.whiskeys.count})" %>
 <% end %>
 
 <h1>投稿一覧</h1>
 
 <% @whiskeys.each do |whiskey| %>
 
-<%= link_to whiskey_path(whiskey) do %>
+<%= link_to admin_whiskey_path(whiskey) do %>
  <%= image_tag whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
 <% end %>
 

@@ -1,2 +1,47 @@
-<h1>Admin::Whiskeys#show</h1>
-<p>Find me in app/views/admin/whiskeys/show.html.erb</p>
+<h1>投稿詳細画面</h1>
+
+<%= image_tag @whiskey.user.get_profile_image, size:"80x80", alt: "ユーザーの写真" %>
+
+<div>投稿者</div>
+<%= @whiskey.user.name %>
+
+<%= image_tag @whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
+
+<div>銘柄</div>
+<%= @whiskey.name %>
+
+<div>感想</div>
+<%= @whiskey.impression %>
+
+<div>価格帯</div>
+<%= @whiskey.price_range %>
+
+<p>ライト</p>
+  <div class="graph">
+    <div style="padding-left: <%= @whiskey.taste %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>リッチ</p>
+
+<p>フルーティー</p>
+  <div class="graph">
+    <div style="padding-left: <%= @whiskey.scent %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>スモーキー</p>
+
+<p>コストパフォーマンス</p>
+<%= render "public/whiskeys/rate", whiskey: @whiskey %>
+
+<%= "いいね数(#{@whiskey.favorites.count})" %>
+
+<p>タグ</p>
+<% if @whiskey.tags.blank? %>
+  <%= "タグはありません" %>
+<% else %>
+ #<%= @whiskey.tags.map(&:tag).join(' #') %>
+<% end %>
+
+<div id="comments_area">
+  <%= render "public/whiskey_comments/comments", whiskey: @whiskey %>
+</div>
