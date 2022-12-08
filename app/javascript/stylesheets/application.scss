@@ -1,2 +1,36 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.top_image {
+  width: 100%;
+  height: 700px;
+  background-image: url(../../assets/images/top_image.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.message {
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 30px;
+}
+
+.graph {
+  height: 15px;
+  width: 270px;
+  background-color: #e9d9cf;
+  border-radius: 5px;
+  display: flex;
+}
+.point {
+  background-color: #683e1b;
+  width: 20px;
+  height: 100%;
+  border-radius: 5px;
+}

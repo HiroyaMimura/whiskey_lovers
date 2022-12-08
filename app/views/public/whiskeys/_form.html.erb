@@ -1,0 +1,71 @@
+<% if whiskey.errors.any? %>
+  <%= whiskey.errors.count %>件のエラーが発生しました
+  <ul>
+    <% whiskey.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: whiskey, local: true do |f| %>
+
+<% if @whiskey.id == nil %>
+  <%= f.label :"写真" %>
+  <%= f.file_field :whiskey_image, value: @whiskey.whiskey_image, accept: 'image/*' %>
+<% else %>
+  <%= f.label :"写真を変更する場合は選択してください" %>
+  <%= f.file_field :whiskey_image, value: @whiskey.whiskey_image, accept: 'image/*' %>
+<% end %>
+
+<%= f.label :"銘柄" %>
+<%= f.text_field :name %>
+
+<%= f.label :"感想" %>
+<%= f.text_area :impression %>
+
+<%= f.label :"味わい" %>
+<p>ライト</p>
+<%= f.range_field :taste, in: 0..250 %>
+<p>リッチ</p>
+
+<%= f.label :"香り" %>
+<p>フルーティー</p>
+<%= f.range_field :scent, in: 0..250 %>
+<p>スモーキー</p>
+
+<% if @whiskey.id == nil %>
+  <%= f.label :"価格帯" %>
+  <%= f.select :price_range, [["〜2000円","〜2000円"],["2000円〜4000円","2000円〜4000円"],["4000円〜6000円","4000円〜6000円"],["6000円〜8000円","6000円〜8000円"],["8000円〜10000円","8000円〜10000円"],["10000円〜","10000円〜"]] %>
+  
+  <%= f.label :"タグ" %>
+  <%= f.text_field :tag, placeholder:",で区切ると複数のタグを登録できます", size: "40x5" %>
+<% else %>
+  <%= f.label :"価格帯" %>
+  <%= f.select :price_range, [["〜2000円","〜2000円"],["2000円〜4000円","2000円〜4000円"],["4000円〜6000円","4000円〜6000円"],["6000円〜8000円","6000円〜8000円"],["8000円〜10000円","8000円〜10000円"],["10000円〜","10000円〜"]], {include_blank: @whiskey.price_range} %>
+
+  <%= f.label :"タグ" %>
+  <%= f.text_field :tag, value: @tag_list, size: "50x5" %>
+<% end %>
+
+<div id="star">
+  <%= f.label :"コストパフォーマンス" %>
+  <div id="post_raty"></div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    let raty_elem = document.querySelector('#post_raty');
+    raty_elem.innerHTML = ""
+    let option = {
+      starOff: "<%= asset_path('star-off.png') %>",
+      starOn: "<%= asset_path('star-on.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      half: true,
+      scoreName: 'whiskey[performance]',
+    };
+    raty(raty_elem,option);
+  });
+  </script>
+
+  <%= f.submit %>
+<% end %>

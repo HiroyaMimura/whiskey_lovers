@@ -1,0 +1,31 @@
+<h1>プロフィール編集</h1>
+
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @user, method: :patch, local:true do |f| %>
+
+    <%= f.label :"ニックネーム" %>
+    <%= f.text_field :name, class: "form-control name" %>
+
+    <% if @user.profile_image.blank? %>
+      <%= f.label :"プロフィール画像(＊任意)" %>
+    <% else %>
+      <%= f.label :"変更する場合は選択してください" %>
+    <% end %>
+    <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+
+    <%= f.label :"メールアドレス" %>
+    <%= f.text_field :email, class: "form-control introduction" %>
+
+    <%= f.submit %>
+
+    <%= link_to "退会する", unsubscribe_path %>
+
+<% end %>

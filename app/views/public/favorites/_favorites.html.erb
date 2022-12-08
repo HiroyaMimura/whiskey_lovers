@@ -1,0 +1,9 @@
+  <% if whiskey.favorited_by?(current_user) %>
+    <%= link_to whiskey_favorites_path(whiskey), method: :delete, remote: true do %>
+      <p class="favorite-button"><i class="fas fa-heart fa-2x" style="color: #e82a2a;"></i><span style="color: #e82a2a; font-size: 32px;"><%= whiskey.favorites.count %></span></p>
+    <% end %>
+  <% else %>
+    <%= link_to whiskey_favorites_path(whiskey), method: :post, remote: true do %>
+      <p class="favorite-button"><i class="far fa-heart fa-2x" style="color: #e82a2a;"></i><span style="color: #e82a2a; font-size: 32px;"><%= whiskey.favorites.count %></span></p>
+    <% end %>
+  <% end %>

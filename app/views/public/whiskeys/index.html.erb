@@ -1,0 +1,54 @@
+<%= flash[:notice] %>
+
+<div>タグ検索</div>
+<% @tag_list.each do |list|%>
+  <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
+  <%="(#{list.whiskeys.count})" %>
+<% end %>
+
+<h1>投稿一覧</h1>
+
+<% @whiskeys.each do |whiskey| %>
+
+<%= link_to whiskey_path(whiskey) do %>
+ <%= image_tag whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
+<% end %>
+
+<div>投稿者</div>
+<%= whiskey.user.name %>
+
+<div>銘柄</div>
+<%= whiskey.name %>
+
+<div>価格帯</div>
+<%= whiskey.price_range %>
+
+<p>ライト</p>
+  <div class="graph">
+    <div style="padding-left: <%= whiskey.taste %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>リッチ</p>
+
+<p>フルーティー</p>
+  <div class="graph">
+    <div style="padding-left: <%= whiskey.scent %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>スモーキー</p>
+
+<p>コストパフォーマンス</p>
+<%= render "rate", whiskey: whiskey %>
+
+<p>タグ</p>
+<% if whiskey.tags.blank? %>
+  <%= "タグはありません" %>
+<% else %>
+ #<%= whiskey.tags.map(&:tag).join(' #') %>
+<% end %>
+
+<div id="favorite_buttons_<%= whiskey.id %>">
+  <%= render "public/favorites/favorites", whiskey: whiskey %>
+</div>
+
+<% end %>

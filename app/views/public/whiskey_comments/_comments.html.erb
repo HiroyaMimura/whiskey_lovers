@@ -1,0 +1,8 @@
+<% whiskey.whiskey_comments.each do |comment| %>
+  <%= image_tag comment.user.get_profile_image, size:"80x80" %><br>
+  <%= comment.user.name %>
+  <%= comment.comment %>
+  <% if comment.user == current_user %>
+    <%= link_to '消去する', whiskey_whiskey_comment_path(comment.whiskey.id,comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
+  <% end %>
+<% end %>
