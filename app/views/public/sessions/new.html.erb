@@ -3,10 +3,9 @@
 <%= flash[:notice] %>
 
 <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-
   <div class="field">
-    <%= f.label :"ニックネーム" %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.label :"メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
