@@ -1,2 +1,58 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h1>マイページ</h1>
+
+<%= flash[:notice] %>
+
+<%= image_tag @user.get_profile_image, size:"100x100", alt: "ユーザーの写真" %>
+
+<%= @user.name %>
+
+<% if @user.name != "ゲストユーザー" %>
+ <%= link_to "プロフィール編集", edit_user_path(@user) %>
+<% else %>
+<% end %>
+
+
+<% @whiskeys.each do |whiskey| %>
+
+  <%= link_to whiskey_path(whiskey) do %>
+    <%= image_tag whiskey.whiskey_image, size:"200x290", alt: "ウイスキーの写真" %>
+  <% end %>
+
+  <div>銘柄</div>
+  <%= whiskey.name %>
+
+  <div>価格帯</div>
+  <%= whiskey.price_range %>
+
+  <p>ライト</p>
+    <div class="graph">
+      <div style="padding-left: <%= whiskey.taste %>px;"></div>
+      <div class="point"></div>
+    </div>
+  <p>リッチ</p>
+
+  <p>フルーティー</p>
+    <div class="graph">
+      <div style="padding-left: <%= whiskey.scent %>px;"></div>
+      <div class="point"></div>
+    </div>
+  <p>スモーキー</p>
+
+  <p>コストパフォーマンス</p>
+  <%= render "public/whiskeys/rate", whiskey: whiskey %>
+
+  <p>タグ</p>
+  <% if whiskey.tags.blank? %>
+    <%= "タグはありません" %>
+  <% else %>
+   #<%= whiskey.tags.map(&:tag).join(' #') %>
+  <% end %>
+
+  <div id="favorite_buttons_<%= whiskey.id %>">
+    <%= render "public/favorites/favorites", whiskey: whiskey %>
+  </div>
+
+<% end %>
+
+
+

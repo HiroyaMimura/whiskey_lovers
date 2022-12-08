@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :name, presence: true, uniqueness: true, length: {maximum: 20}
+  validates :email, presence: true, uniqueness: true, length: {maximum: 20}
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -17,7 +18,7 @@ class User < ApplicationRecord
   #   end
   #     profile_image
   # end
-  
+
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end

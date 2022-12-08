@@ -22,9 +22,9 @@ scope module: :public do
   get "searches_name"=>"searches#searches_name"
   get "searches_tag"=>"searches#searches_tag"
   get "searches_price"=>"searches#searches_price"
+  get "users/unsubscribe"=>"users#unsubscribe", as: "unsubscribe"
+  patch "users/withdrawal"=>"users#withdrawal", as: "withdrawal"
   resources:users, only: [:show,:edit,:update]
-  get "users/unsubscribe"=>"users#unsubscribe"
-  patch "users/withdrawal"=>"users#withdrawal"
 end
 
 namespace :admin do
