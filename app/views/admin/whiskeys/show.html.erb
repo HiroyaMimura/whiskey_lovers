@@ -45,3 +45,5 @@
 <div id="comments_area">
   <%= render "public/whiskey_comments/comments", whiskey: @whiskey %>
 </div>
+
+<%= link_to '投稿削除', admin_whiskey_path(@whiskey), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>

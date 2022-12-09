@@ -1,8 +1,16 @@
 <% whiskey.whiskey_comments.each do |comment| %>
-  <%= image_tag comment.user.get_profile_image, size:"80x80" %><br>
+
+  <% if admin_signed_in? %>
+    <%= link_to admin_user_path(comment) do %>
+      <%= image_tag comment.user.get_profile_image, size:"80x80" %>
+    <% end %>
+  <% else %>
+    <%= image_tag comment.user.get_profile_image, size:"80x80" %>
+  <% end %>
+
   <%= comment.user.name %>
   <%= comment.comment %>
-  <% if comment.user == current_user %>
+  <% if comment.user == current_user || admin_signed_in? %>
     <%= link_to '消去する', whiskey_whiskey_comment_path(comment.whiskey.id,comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
   <% end %>
 <% end %>

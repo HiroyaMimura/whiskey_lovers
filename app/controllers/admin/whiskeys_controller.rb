@@ -6,6 +6,9 @@ class Admin::WhiskeysController < ApplicationController
   end
 
   def destroy
+   @whiskey = Whiskey.find(params[:id])
+   @whiskey.destroy
+   redirect_to admin_root_path
   end
 
 end

@@ -44,7 +44,7 @@
 
 <% if @whiskey.user == current_user %>
   <%= link_to '編集', edit_whiskey_path(@whiskey), class: "btn btn-sm btn-success" %>
-  <%= link_to '削除', @whiskey, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+  <%= link_to '削除', whiskey_path(@whiskey), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
 <% end %>
 
 <%= form_with model: [@whiskey, @whiskey_comment], local: false do |f| %>
