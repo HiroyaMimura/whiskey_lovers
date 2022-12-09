@@ -2,7 +2,7 @@ class Public::WhiskeysController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @whiskeys = Whiskey.all.page(params[:page]).per(10)
+    @whiskeys = Whiskey.page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 

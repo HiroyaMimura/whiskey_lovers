@@ -45,10 +45,10 @@ class Public::SessionsController < Devise::SessionsController
 
 # 退会しているかを判断するメソッド
   def user_state
-    @user = User.find_by(name: params[:user][:name])
+    @user = User.find_by(email: params[:user][:email])
     if @user
       if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
-        flash[:notice] = "退会済みです。"
+        flash[:notice] = "退会済みです。再度、ご登録いただきご利用ください。"
         redirect_to new_user_registration_path
       else
         flash[:notice] = "入力が正しくありません。"

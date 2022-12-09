@@ -16,9 +16,19 @@
 }
 
 .message {
+  line-height: 65px;
   text-align: center;
   color: #FFFFFF;
   font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.message2 {
+  line-height: 65px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .graph {

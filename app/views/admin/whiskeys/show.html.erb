@@ -1,6 +1,8 @@
 <h1>投稿詳細画面</h1>
 
-<%= image_tag @whiskey.user.get_profile_image, size:"80x80", alt: "ユーザーの写真" %>
+<%= link_to admin_user_path(@whiskey) do %>
+  <%= image_tag @whiskey.user.get_profile_image, size:"80x80", alt: "ユーザーの写真" %>
+<% end %>
 
 <div>投稿者</div>
 <%= @whiskey.user.name %>

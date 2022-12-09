@@ -1,7 +1,7 @@
 <% whiskey.whiskey_comments.each do |comment| %>
 
   <% if admin_signed_in? %>
-    <%= link_to admin_user_path(comment) do %>
+    <%= link_to admin_user_path(comment.user_id) do %>
       <%= image_tag comment.user.get_profile_image, size:"80x80" %>
     <% end %>
   <% else %>
