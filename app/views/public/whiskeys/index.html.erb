@@ -1,56 +1,82 @@
 <%= flash[:notice] %>
 
-<div>タグ検索</div>
-<% @tag_list.each do |list|%>
-  <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
-  <%="(#{list.whiskeys.count})" %>
-<% end %>
+<div class="container_fulid">
+  <div class="row">
+    <div class="tag_list col-3 ml-5 mt-3">
+      <table class="table-bordered">
+        <thead class="tag_thead">
+          <tr>
+            <th class="tag_title">タグ検索</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tag_list.each do |list|%>
+            <tr>
+              <td>
+              <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
+              <%="(#{list.whiskeys.count})" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<h1>投稿一覧</h1>
+    <div class="col-8">
+      <h2 class="title">レビューリスト</h2>
 
-<% @whiskeys.each do |whiskey| %>
+      <% @whiskeys.each do |whiskey| %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= link_to whiskey_path(whiskey) do %>
+              <%= image_tag whiskey.whiskey_image, size:"260x350", alt: "ウイスキーの写真" %>
+            <% end %>
+          </div>
 
-<%= link_to whiskey_path(whiskey) do %>
- <%= image_tag whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
-<% end %>
+          <div class="col-md-4 ml-2">
+            <div>
+              投稿者<%= whiskey.user.name %>
+            </div>
+            <div>
+              銘柄<%= whiskey.name %>
+            </div>
+            <div>
+              価格帯<%= whiskey.price_range %>
+            </div>
+            <div>
+              ライト
+              <div class="graph">
+                <div style="padding-left: <%= whiskey.taste %>px;"></div>
+                <div class="point"></div>
+              </div>
+              リッチ
+            </div>
+            <p>フルーティー</p>
+              <div class="graph">
+                <div style="padding-left: <%= whiskey.scent %>px;"></div>
+                <div class="point"></div>
+              </div>
+            <p>スモーキー</p>
 
-<div>投稿者</div>
-<%= whiskey.user.name %>
+            <p>コストパフォーマンス</p>
+            <%= render "rate", whiskey: whiskey %>
 
-<div>銘柄</div>
-<%= whiskey.name %>
+            <div>タグ
+            <% if whiskey.tags.blank? %>
+              <%= "タグはありません" %>
+            <% else %>
+             #<%= whiskey.tags.map(&:tag).join(' #') %>
+            <% end %>
+            </div>
 
-<div>価格帯</div>
-<%= whiskey.price_range %>
-
-<p>ライト</p>
-  <div class="graph">
-    <div style="padding-left: <%= whiskey.taste %>px;"></div>
-    <div class="point"></div>
+            <div id="favorite_buttons_<%= whiskey.id %>">
+              <%= render "public/favorites/favorites", whiskey: whiskey %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-<p>リッチ</p>
-
-<p>フルーティー</p>
-  <div class="graph">
-    <div style="padding-left: <%= whiskey.scent %>px;"></div>
-    <div class="point"></div>
-  </div>
-<p>スモーキー</p>
-
-<p>コストパフォーマンス</p>
-<%= render "rate", whiskey: whiskey %>
-
-<p>タグ</p>
-<% if whiskey.tags.blank? %>
-  <%= "タグはありません" %>
-<% else %>
- #<%= whiskey.tags.map(&:tag).join(' #') %>
-<% end %>
-
-<div id="favorite_buttons_<%= whiskey.id %>">
-  <%= render "public/favorites/favorites", whiskey: whiskey %>
 </div>
-
-<% end %>
 
 <%= paginate @whiskeys %>

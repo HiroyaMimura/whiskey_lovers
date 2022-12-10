@@ -1,7 +1,22 @@
-<h3>本当に退会しますか？</h3>
-  <p>退会すると、ユーザー情報や投稿履歴など全て削除されます。</p>
-  <p>退会する場合は「退会する」をクリックしてください。</p>
-  <p class="inline-block">
-    <%= link_to "退会しない", user_path(current_user) %>
-    <%= link_to "退会する", withdrawal_path, method: :patch, data: { confirm: '本当に退会しますか？' } %>
-  </p>
+<div class="withdrawal_image">
+  <div class="image">
+    <h2 class="title">本当に退会しますか？</h2>
+    
+    <div class="d-flex justify-content-center">
+      <div>
+        退会すると、ユーザー情報や投稿履歴など全て削除されます。<br>
+        退会する場合は「退会する」をクリックしてください。<br>
+      </div>
+    </div>
+    
+    <div class="d-flex justify-content-center mt-5">
+      <div class="mx-3">
+        <%= link_to "退会しない", user_path(current_user), class:"link my-3  text-white btn btn-outline-secondary" %>
+      </div>
+      <div class="mx-3">
+        <%= link_to "退会する", withdrawal_path, method: :patch, data: { confirm: '本当に退会しますか？' }, class:"my-3 btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>
+

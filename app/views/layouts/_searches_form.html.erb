@@ -1,4 +1,4 @@
-<div class="col-4mx-5 my-3">
+<div class="mx-5 my-3">
   <%= form_with url: searches_name_path, local: true, method: :get do |f| %>
   <%= f.text_field :word, placeholder:"銘柄で絞り込み" %>
   <%= f.submit "検索" %>
