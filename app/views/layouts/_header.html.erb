@@ -1,42 +1,48 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container-fluid">
         <!--ユーザー用のヘッダー-->
         <% if user_signed_in? %>
-        <a class="navbar" href="/whiskeys"><%= image_tag 'logo.png', size:'90x90' %></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="logo">
+          <a class="navbar" href="/whiskeys"><%= image_tag 'logo.png', size:'100x90' %></a>
+        </div>
+        <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <div><%= render 'layouts/searches_form' %></div>
           <ul class="navbar-nav ml-auto">
-            <li class="mr-2"><%= link_to "マイページ", user_path(current_user), class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="mr-2"><%= link_to "投稿する", new_whiskey_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="mr-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "マイページ", user_path(current_user), class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "投稿する", new_whiskey_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
           </ul>
         <!--管理人のヘッダー-->
         <% elsif admin_signed_in? %>
-        <a class="navbar" href="/admin"><%= image_tag 'logo.png', size:'90x90' %></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="logo">
+          <a class="navbar" href="/admin"><%= image_tag 'logo.png', size:'100x90' %></a>
+        </div>
+        <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <div>管理者ページ</div>
           <ul class="navbar-nav ml-auto">
-            <li class="mr-2"><%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="mr-2"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="mx-4"><%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="mx-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
           </ul>
         </div>
         <% else %>
-        <a class="navbar" href="/whiskeys"><%= image_tag 'logo.png', size:'90x90' %></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="logo">
+          <a class="navbar" href="/whiskeys"><%= image_tag 'logo.png', size:'100x90' %></a>
+        </div>
+        <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            <li class="mr-2"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="mr-2"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="mr-2"><%= link_to "ゲストログイン", users_guest_sign_in_path, class: 'nav-link text-white btn btn-outline-secondary', method: :post %></li>
+            <li class="link mx-4"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "ゲストログイン", users_guest_sign_in_path, class: 'nav-link text-white btn btn-outline-secondary', method: :post %></li>
           </ul>
         <% end %>
     </div>
