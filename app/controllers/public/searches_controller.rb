@@ -3,21 +3,28 @@ class Public::SearchesController < ApplicationController
 
   def searches_name
     @word = params[:word]
+    @tag_list = Tag.all
     if @word.blank?
       redirect_to whiskeys_path
     else
-      @whiskeys_search = Whiskey.search(params[:word])
+      @whiskeys_search = Kaminari.paginate_array(Whiskey.search(@word)).page(params[:page]).per(5)
     end
   end
 
   def searches_price
     @word = params[:price]
-    @whiskeys_search = Whiskey.looks(params[:price])
+    @tag_list = Tag.all
+    if @word.blank?
+      redirect_to whiskeys_path
+    else
+      @whiskeys_search = Kaminari.paginate_array(Whiskey.looks(@word)).page(params[:page]).per(5)
+    end
   end
 
   def searches_tag
+    @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @word = @tag.tag
-    @whiskeys_search = @tag.whiskeys
+    @whiskeys_search = @tag.whiskeys.page(params[:page]).per(5)
   end
 end

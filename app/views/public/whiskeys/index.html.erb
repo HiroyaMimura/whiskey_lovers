@@ -2,7 +2,7 @@
 
 <div class="container_fulid">
   <div class="row">
-    <div class="tag_list col-3 ml-5 mt-3">
+    <div class="col-sm-3 ml-2 mt-3">
       <table class="table-bordered">
         <thead class="tag_thead">
           <tr>
@@ -22,51 +22,63 @@
       </table>
     </div>
 
-    <div class="col-8">
+    <div class="col-sm-8 ml-5 mb-3">
       <h2 class="title">レビューリスト</h2>
 
       <% @whiskeys.each do |whiskey| %>
         <div class="row">
           <div class="col-md-4">
             <%= link_to whiskey_path(whiskey) do %>
-              <%= image_tag whiskey.whiskey_image, size:"260x350", alt: "ウイスキーの写真" %>
+              <%= image_tag whiskey.whiskey_image, size:"230x300", alt: "ウイスキーの写真" %>
             <% end %>
           </div>
 
-          <div class="col-md-4 ml-2">
-            <div>
-              投稿者<%= whiskey.user.name %>
+          <div class="col-md-7 ml-2 mb-5">
+            <div class="mb-2">
+              <span class="mr-5">投稿者</span>
+              <%= whiskey.user.name %>
             </div>
-            <div>
-              銘柄<%= whiskey.name %>
+
+            <div class="mb-2">
+              <span class="mr-4">銘柄</span>
+              <%= whiskey.name %>
             </div>
-            <div>
-              価格帯<%= whiskey.price_range %>
+
+            <div class="mb-2">
+              <span class="mr-4">価格帯</span>
+              <%= whiskey.price_range %>
             </div>
-            <div>
-              ライト
-              <div class="graph">
+
+            <div class="taste_graph">
+              <div>ライト</div>
+              <div class="graph1">
                 <div style="padding-left: <%= whiskey.taste %>px;"></div>
                 <div class="point"></div>
               </div>
-              リッチ
+              <div>リッチ</div>
             </div>
-            <p>フルーティー</p>
-              <div class="graph">
+
+            <div class="taste_graph">
+              <div>フルーティー</div>
+              <div class="graph2">
                 <div style="padding-left: <%= whiskey.scent %>px;"></div>
                 <div class="point"></div>
               </div>
-            <p>スモーキー</p>
+              <div>スモーキー</div>
+            </div>
 
-            <p>コストパフォーマンス</p>
-            <%= render "rate", whiskey: whiskey %>
+            <div>コストパフォーマンス</div>
+            <div>
+              <%= render "public/whiskeys/rate", whiskey: whiskey %>
+            </div>
 
-            <div>タグ
-            <% if whiskey.tags.blank? %>
-              <%= "タグはありません" %>
-            <% else %>
-             #<%= whiskey.tags.map(&:tag).join(' #') %>
-            <% end %>
+            <div class="mt-2 mb-1">タグ</div>
+            <div>
+              <% if whiskey.tags.blank? %>
+                <%= "タグはありません" %>
+              <% else %>
+               #<%= whiskey.tags.map(&:tag).join(' #') %>
+              <% end %>
             </div>
 
             <div id="favorite_buttons_<%= whiskey.id %>">
