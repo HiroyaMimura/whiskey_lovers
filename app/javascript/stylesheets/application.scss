@@ -113,8 +113,40 @@ footer {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+//range_feildのデザイン
+input[type="range"] {
+  -webkit-appearance: none; //これ無しだとスタイルがほぼ全く反映されないので注意
+  appearance: none;
+  cursor: pointer; // カーソルを分かりやすく
+  outline: none; // スライダーのアウトラインは目障りになるので消す
+  background: #e9d9cf; // バーの背景色
+  height: 12px; // バーの高さ
+  width: 270px; // スライダーの幅
+  border-radius: 5px; // バーの端の丸み
+  // -webkit-向けのつまみ
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none; //デフォルトのつまみのスタイルを解除
+    background: #351e0a; // 背景色
+    width: 18px; // 幅
+    height: 18px; // 高さ
+    border-radius: 5px; // 円形に
+  }
+  // -moz-向けのつまみ
+  &::-moz-range-thumb {
+    background: #351e0a; // 背景色
+    width: 18px; // 幅
+    height: 18px; // 高さ
+    border-radius: 5px; // 円形に
+    border: none; // デフォルトの線を消す
+  }
+  // Firefoxで点線が周りに表示されてしまう問題の解消
+  &::-moz-focus-outer {
+    border: 0;
+  }
+}
+
 // taste,scentのレビューのグラフ表示
-.taste_graph {
+.taste_scent_graph {
   margin: 10px 0 10px 0;
   height: 30px;
   display: flex;
@@ -151,6 +183,7 @@ footer {
   font-size: 28px;
 }
 
+// bootstrapのページネーション補足
 .pagination {
   background-color: white;
   justify-content: center;

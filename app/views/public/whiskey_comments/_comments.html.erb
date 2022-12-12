@@ -1,16 +1,30 @@
+<div>コメント数：<%= whiskey.whiskey_comments.count %>件</div>
+
+
 <% whiskey.whiskey_comments.each do |comment| %>
+  <div class="row">
+    <div class="col-4 mt-3">
+      <% if admin_signed_in? %>
+        <%= link_to admin_user_path(comment.user_id) do %>
+          <%= image_tag comment.user.get_profile_image, size:"50x50" %>
+        <% end %>
+      <% else %>
+        <%= image_tag comment.user.get_profile_image, size:"50x50" %>
+      <% end %>
 
-  <% if admin_signed_in? %>
-    <%= link_to admin_user_path(comment.user_id) do %>
-      <%= image_tag comment.user.get_profile_image, size:"80x80" %>
-    <% end %>
-  <% else %>
-    <%= image_tag comment.user.get_profile_image, size:"80x80" %>
-  <% end %>
+      <div><%= comment.user.name %></div>
 
-  <%= comment.user.name %>
-  <%= comment.comment %>
-  <% if comment.user == current_user || admin_signed_in? %>
-    <%= link_to '消去する', whiskey_whiskey_comment_path(comment.whiskey.id,comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
-  <% end %>
+      <div>
+        <% if comment.user == current_user || admin_signed_in? %>
+          <%= link_to '消去する', whiskey_whiskey_comment_path(comment.whiskey.id,comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-7 mt-3">
+      <div>コメント</div>
+      <div class="mt-2"><%= comment.comment %></div>
+    </div>
+  </div>
 <% end %>
+

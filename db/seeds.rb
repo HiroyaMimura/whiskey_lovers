@@ -20,7 +20,7 @@
   end
 
     Whiskey.create!(
-      user_id: '2',
+      user_id: '1',
       name: 'TALISKER',
       impression: '好きな味わいです',
       taste: '100',
@@ -32,7 +32,7 @@
       )
 
     Whiskey.create!(
-      user_id: '2',
+      user_id: '1',
       name: 'イチローズモルト',
       impression: '飲みやすいです',
       taste: '70',
@@ -44,7 +44,7 @@
       )
 
     Whiskey.create!(
-      user_id: '3',
+      user_id: '2',
       name: 'BOWMORE',
       impression: '美味しいです',
       taste: '100',
@@ -56,7 +56,7 @@
       )
 
     Whiskey.create!(
-      user_id: '4',
+      user_id: '2',
       name: 'ARDBEG',
       impression: 'かなりスモーキーです',
       taste: '130',
@@ -110,22 +110,26 @@
         },
         {
           whiskey_id: '2',
-          tag_id: '2'
+          tag_id: '7'
         },
         {
-          whiskey_id: '2',
+          whiskey_id: '3',
+          tag_id: '1'
+        },
+        {
+          whiskey_id: '3',
           tag_id: '3'
         },
         {
-          whiskey_id: '3',
+          whiskey_id: '4',
           tag_id: '2'
         },
         {
-          whiskey_id: '3',
+          whiskey_id: '4',
           tag_id: '4'
         },
         {
-          whiskey_id: '3',
+          whiskey_id: '4',
           tag_id: '6'
         },
       ]
