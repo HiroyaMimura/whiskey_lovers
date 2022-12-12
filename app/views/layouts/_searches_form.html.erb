@@ -1,10 +1,12 @@
-<%= form_with url: searches_name_path, local: true, method: :get do |f| %>
-<%= f.text_field :word, placeholder:"銘柄で絞り込み" %>
-<%= f.submit "検索" %>
-<% end %>
-
-<%= form_with url: searches_price_path, local: true, method: :get do |f| %>
-<%= f.label :"価格帯で絞り込み" %>
-<%= f.select :price, [["〜2000円","〜2000円"],["2000円〜4000円","2000円〜4000円"],["4000円〜6000円","4000円〜6000円"],["6000円〜8000円","6000円〜8000円"],["8000円〜10000円","8000円〜10000円"],["10000円〜","10000円〜"]] %>
-<%= f.submit "検索" %>
-<% end %>
+<div class="mx-5 my-3">
+  <%= form_with url: searches_name_path, local: true, method: :get do |f| %>
+  <%= f.text_field :word, placeholder:"銘柄で絞り込み", size:"17x10" %>
+  <%= f.submit "検索" %>
+  <% end %>
+</div>
+<div class="mx-5 my-3">
+  <%= form_with url: searches_price_path, local: true, method: :get do |f| %>
+  <%= f.select :price, [["〜2000円","〜2000円"],["2000円〜4000円","2000円〜4000円"],["4000円〜6000円","4000円〜6000円"],["6000円〜8000円","6000円〜8000円"],["8000円〜10000円","8000円〜10000円"],["10000円〜","10000円〜"]], {include_blank: "価格帯で絞り込み"} %>
+  <%= f.submit "検索" %>
+  <% end %>
+</div>

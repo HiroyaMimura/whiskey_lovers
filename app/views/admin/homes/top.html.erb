@@ -1,2 +1,54 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<%= flash[:notice] %>
+
+<div>タグ一覧</div>
+<% @tag_list.each do |list|%>
+  <%= list.tag %>
+  <%= "(#{list.whiskeys.count})" %>
+<% end %>
+
+<h1>投稿一覧</h1>
+
+<% @whiskeys.each do |whiskey| %>
+
+<%= link_to admin_whiskey_path(whiskey) do %>
+ <%= image_tag whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
+<% end %>
+
+<div>投稿者</div>
+<%= whiskey.user.name %>
+
+<div>銘柄</div>
+<%= whiskey.name %>
+
+<div>価格帯</div>
+<%= whiskey.price_range %>
+
+<p>ライト</p>
+  <div class="graph">
+    <div style="padding-left: <%= whiskey.taste %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>リッチ</p>
+
+<p>フルーティー</p>
+  <div class="graph">
+    <div style="padding-left: <%= whiskey.scent %>px;"></div>
+    <div class="point"></div>
+  </div>
+<p>スモーキー</p>
+
+<p>コストパフォーマンス</p>
+<%= render "public/whiskeys/rate", whiskey: whiskey %>
+
+<p>タグ</p>
+<% if whiskey.tags.blank? %>
+  <%= "タグはありません" %>
+<% else %>
+ #<%= whiskey.tags.map(&:tag).join(' #') %>
+<% end %>
+
+<%= "いいね数(#{whiskey.favorites.count})" %>
+
+<% end %>
+
+<%= paginate @whiskeys %>

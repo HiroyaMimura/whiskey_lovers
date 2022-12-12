@@ -2,7 +2,7 @@ class Public::WhiskeysController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @whiskeys = Whiskey.all.page(params[:page]).per(10)
+    @whiskeys = Whiskey.page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -38,7 +38,7 @@ class Public::WhiskeysController < ApplicationController
     @whiskey = Whiskey.find(params[:id])
     tag_list = params[:whiskey][:tag].split(',')
     if @whiskey.update(whiskey_params)
-      # このwhiskey_idに紐づいていたタグを@old_relationsに入れる
+      # このwhiskey_idに紐づいていたタグをold_relationsに入れる
       old_relations = WhiskeyTag.where(whiskey_id: @whiskey.id)
       # それらを取り出して消す
       old_relations.each do |relation|

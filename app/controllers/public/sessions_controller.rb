@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params, only: [:create]
+  # before_action :configure_sign_in_params, only: [:create]
   before_action :user_state, only: [:create]
 
   # GET /resource/sign_in
@@ -22,11 +22,11 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to whiskeys_path, notice: 'ゲストログインしました。'
+    redirect_to whiskeys_path, notice: 'ゲストログインしました。ロゴをクリックするとレビューリスト画面へ遷移します。'
   end
 
   def after_sign_in_path_for(resource)
-    flash[:notice] = 'ログインしました。'
+    flash[:notice] = 'ログインしました。ロゴをクリックするとレビューリスト画面へ遷移します。'
     whiskeys_path
   end
 
@@ -38,20 +38,17 @@ class Public::SessionsController < Devise::SessionsController
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :email, :password])
-  end
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
+  # end
 
 # 退会しているかを判断するメソッド
   def user_state
-    @user = User.find_by(name: params[:user][:name])
+    @user = User.find_by(email: params[:user][:email])
     if @user
       if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
-        flash[:notice] = "退会済みです。"
+        flash[:notice] = "退会済みです。再度、ご登録いただきご利用ください。"
         redirect_to new_user_registration_path
       else
         flash[:notice] = "入力が正しくありません。"

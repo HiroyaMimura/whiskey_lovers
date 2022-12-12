@@ -1,2 +1,27 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<h1>ユーザー一覧</h1>
+
+<% @users.each do |user| %>
+
+<%= link_to admin_user_path(user) do %>
+  <%= image_tag user.get_profile_image, size:"100x100", alt:"プロフィール画像" %>
+<% end %>
+
+<div>ニックネーム</div>
+<%= user.name %>
+
+<div>投稿数</div>
+<%= user.whiskeys.count %>
+
+<div><%= user.name %>様のコメント数</div>
+<%= user.whiskey_comments.count %>
+
+<div>登録状況</div>
+  <% if user.is_deleted == false %>
+    <p>有効</p>
+  <% else %>
+    <P>退会済み</P>
+  <% end %>
+
+<% end %>
+
+<%= paginate @users %>

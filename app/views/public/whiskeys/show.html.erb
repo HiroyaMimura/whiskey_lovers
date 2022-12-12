@@ -1,57 +1,99 @@
-<%= image_tag @whiskey.user.get_profile_image, size:"80x80", alt: "ユーザーの写真" %>
+<div class="container_fulid">
+  <div class="row ml-3">
+    <div class="col-sm-3 ml-5 mt-3">
+      <div>
+        <%= image_tag @whiskey.user.get_profile_image, size:"100x100", alt: "ユーザーの写真" %>
+      </div>
 
-<div>投稿者</div>
-<%= @whiskey.user.name %>
+      <div class="mt-3">投稿者</div>
+      <p class="mt-1"><%= @whiskey.user.name %></p>
 
-<%= image_tag @whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
+      <% if @whiskey.user == current_user %>
+        <div class="mt-3">投稿の編集・削除</div>
+        <div class="d-flex mt-2">
+          <div>
+            <%= link_to '編集', edit_whiskey_path(@whiskey), class: "link text-white btn btn-sm btn-outline-secondary" %>
+          </div>
+          <div class="ml-3">
+            <%= link_to '削除', whiskey_path(@whiskey), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-<div>銘柄</div>
-<%= @whiskey.name %>
+    <div class="col-sm-8 mt-3">
+      <div class="row">
+        <div class="col-md-4">
+          <%= image_tag @whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
+        </div>
 
-<div>感想</div>
-<%= @whiskey.impression %>
+        <div class="col-md-6 ml-1 mb-5">
+          <div class="mb-2">
+            <span class="mr-5">銘柄</span>
+            <%= @whiskey.name %>
+          </div>
 
-<div>価格帯</div>
-<%= @whiskey.price_range %>
+          <div class="mb-2">
+            <span class="mr-4">感想</span>
+            <%= @whiskey.impression %>
+          </div>
 
-<p>ライト</p>
-  <div class="graph">
-    <div style="padding-left: <%= @whiskey.taste %>px;"></div>
-    <div class="point"></div>
+          <div class="mb-2">
+            <span class="mr-4">価格帯</span>
+            <%= @whiskey.price_range %>
+          </div>
+
+          <div class="taste_scent_graph">
+            <div>ライト</div>
+            <div class="graph1">
+              <div style="padding-left: <%= @whiskey.taste %>px;"></div>
+              <div class="point"></div>
+            </div>
+            <div>リッチ</div>
+          </div>
+
+          <div class="taste_scent_graph">
+            <div>フルーティー</div>
+            <div class="graph2">
+              <div style="padding-left: <%= @whiskey.scent %>px;"></div>
+              <div class="point"></div>
+            </div>
+            <div>スモーキー</div>
+          </div>
+
+          <div>コストパフォーマンス</div>
+          <div>
+            <%= render "public/whiskeys/rate", whiskey: @whiskey %>
+          </div>
+
+          <div id="favorite_buttons_<%= @whiskey.id %>">
+            <%= render "public/favorites/favorites", whiskey: @whiskey %>
+          </div>
+
+          <div class="mt-2 mb-1">タグ</div>
+          <% if @whiskey.tags.blank? %>
+            <%= "タグはありません" %>
+          <% else %>
+           #<%= @whiskey.tags.map(&:tag).join(' #') %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row mt-3 mb-5">
+        <div class="col-md-5">
+          <%= form_with model: [@whiskey, @whiskey_comment], local: false do |f| %>
+            <%= f.text_area :comment, size: "40x5", placeholder: "コメントはここに" %><br>
+            <%= f.submit "送信", class: "link text-white btn btn-outline-secondary" %>
+          <% end %>
+        </div>
+
+        <div class="col-md-6 offset-1">
+          <div id="comments_area">
+            
+            <%= render "public/whiskey_comments/comments", whiskey: @whiskey %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<p>リッチ</p>
-
-<p>フルーティー</p>
-  <div class="graph">
-    <div style="padding-left: <%= @whiskey.scent %>px;"></div>
-    <div class="point"></div>
-  </div>
-<p>スモーキー</p>
-
-<p>コストパフォーマンス</p>
-<%= render "rate", whiskey: @whiskey %>
-
-<div id="favorite_buttons_<%= @whiskey.id %>">
-  <%= render "public/favorites/favorites", whiskey: @whiskey %>
-</div>
-
-<p>タグ</p>
-<% if @whiskey.tags.blank? %>
-  <%= "タグはありません" %>
-<% else %>
- #<%= @whiskey.tags.map(&:tag).join(' #') %>
-<% end %>
-
-<% if @whiskey.user == current_user %>
-  <%= link_to '編集', edit_whiskey_path(@whiskey), class: "btn btn-sm btn-success" %>
-  <%= link_to '削除', @whiskey, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-<% end %>
-
-<%= form_with model: [@whiskey, @whiskey_comment], local: false do |f| %>
-  <%= f.text_area :comment, size: "80x5", placeholder: "コメントはここに" %>
-  <%= f.submit "送信" %>
-<% end %>
-
-<div id="comments_area">
-  <%= render "public/whiskey_comments/comments", whiskey: @whiskey %>
 </div>

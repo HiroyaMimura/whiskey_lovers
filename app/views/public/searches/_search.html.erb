@@ -1,51 +1,98 @@
-<h1>"<%= word %>"検索結果</h1>
-
-<% unless whiskeys_search.blank? %>
-
-  <% whiskeys_search.each do |whiskey| %>
-  
-    <%= link_to whiskey_path(whiskey) do %>
-     <%= image_tag whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
-    <% end %>
-  
-    <div>投稿者</div>
-    <%= whiskey.user.name %>
-  
-    <div>銘柄</div>
-    <%= whiskey.name %>
-  
-    <div>価格帯</div>
-    <%= whiskey.price_range %>
-  
-    <p>ライト</p>
-      <div class="graph">
-        <div style="padding-left: <%= whiskey.taste %>px;"></div>
-        <div class="point"></div>
-      </div>
-    <p>リッチ</p>
-  
-    <p>フルーティー</p>
-      <div class="graph">
-        <div style="padding-left: <%= whiskey.scent %>px;"></div>
-        <div class="point"></div>
-      </div>
-    <p>スモーキー</p>
-  
-    <p>コストパフォーマンス</p>
-    <%= render "public/whiskeys/rate", whiskey: whiskey %>
-  
-    <p>タグ</p>
-    <% if whiskey.tags.blank? %>
-      <%= "タグはありません" %>
-    <% else %>
-     #<%= whiskey.tags.map(&:tag).join(' #') %>
-    <% end %>
-  
-    <div id="favorite_buttons_<%= whiskey.id %>">
-      <%= render "public/favorites/favorites", whiskey: whiskey %>
+<div class="container_fulid">
+  <div class="row">
+    <div class="col-sm-3 ml-3 mt-3">
+      <table class="table-bordered">
+        <thead class="tag_thead">
+          <tr>
+            <th class="tag_title">タグ検索</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tag_list.each do |list|%>
+            <tr>
+              <td>
+              <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
+              <%="(#{list.whiskeys.count})" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
-  
-<% else %>
-    <div>見つかりませんでした</div>
-<% end %>
+
+    <div class="col-sm-8 ml-5 mb-3">
+      <h2 class="title">"<%= word %>"検索結果</h2>
+
+      <% unless whiskeys_search.blank? %>
+
+        <% whiskeys_search.each do |whiskey| %>
+          <div class="row">
+            <div class="col-md-4">
+              <%= link_to whiskey_path(whiskey) do %>
+               <%= image_tag whiskey.whiskey_image, size:"230x300", alt: "ウイスキーの写真" %>
+              <% end %>
+            </div>
+
+            <div class="col-md-7 ml-2 mb-5">
+              <div class="mb-2">
+                <span class="mr-5">投稿者</span>
+                <%= whiskey.user.name %>
+              </div>
+
+              <div class="mb-2">
+                <span class="mr-4">銘柄</span>
+                <%= whiskey.name %>
+              </div>
+
+              <div class="mb-2">
+                <span class="mr-4">価格帯</span>
+                <%= whiskey.price_range %>
+              </div>
+
+              <div class="taste_scent_graph">
+                <div>ライト</div>
+                <div class="graph1">
+                  <div style="padding-left: <%= whiskey.taste %>px;"></div>
+                  <div class="point"></div>
+                </div>
+                <div>リッチ</div>
+              </div>
+
+              <div class="taste_scent_graph">
+                <div>フルーティー</div>
+                <div class="graph2">
+                  <div style="padding-left: <%= whiskey.scent %>px;"></div>
+                  <div class="point"></div>
+                </div>
+                <div>スモーキー</div>
+              </div>
+
+              <div>コストパフォーマンス</div>
+              <div>
+                <%= render "public/whiskeys/rate", whiskey: whiskey %>
+              </div>
+
+              <div class="mt-2 mb-1">タグ</div>
+              <div>
+                <% if whiskey.tags.blank? %>
+                  <%= "タグはありません" %>
+                <% else %>
+                 #<%= whiskey.tags.map(&:tag).join(' #') %>
+                <% end %>
+              </div>
+
+              <div id="favorite_buttons_<%= whiskey.id %>">
+                <%= render "public/favorites/favorites", whiskey: whiskey %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+      <% else %>
+        <div>見つかりませんでした</div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= paginate @whiskeys_search %>
