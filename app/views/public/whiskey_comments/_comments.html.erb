@@ -23,7 +23,7 @@
 
     <div class="col-7 mt-3">
       <div>コメント</div>
-      <div class="mt-2"><%= comment.comment %></div>
+      <div class="mt-2"><%= simple_format(comment.comment) %></div>
     </div>
   </div>
 <% end %>

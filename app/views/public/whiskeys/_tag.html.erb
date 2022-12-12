@@ -1,0 +1,23 @@
+<div class="col-sm-3 ml-3 mt-5">
+  <table class="table-bordered">
+    <thead class="tag_thead">
+      <tr>
+        <th class="tag_title">タグリスト</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tag_list.each do |list|%>
+        <tr>
+          <td>
+            <% unless admin_signed_in? %>
+              <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
+            <% else %>
+              <%= list.tag %>
+            <% end %>
+              <%="(#{list.whiskeys.count})" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

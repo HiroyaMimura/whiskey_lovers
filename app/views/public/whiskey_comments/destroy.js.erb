@@ -1,2 +1,4 @@
 $("#comments_area").html("<%= j(render "public/whiskey_comments/comments", whiskey: @whiskey) %>");
+<% unless admin_signed_in? %>
 $("#favorite_buttons_<%= @whiskey.id %>").html("<%= j(render "public/favorites/favorites", whiskey: @whiskey) %>");
+<% end %>

@@ -1,5 +1,5 @@
 class Public::WhiskeyCommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate, only: [:user, :admin]
 
   def create
     @whiskey = Whiskey.find(params[:whiskey_id])

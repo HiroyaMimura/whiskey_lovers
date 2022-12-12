@@ -1,6 +1,6 @@
 <div class="container_fulid">
   <div class="row ml-3">
-    <div class="col-sm-3 ml-5 mt-3">
+    <div class="col-sm-3 ml-5 mt-5">
       <div>
         <%= image_tag @whiskey.user.get_profile_image, size:"100x100", alt: "ユーザーの写真" %>
       </div>
@@ -22,24 +22,26 @@
     </div>
 
     <div class="col-sm-8 mt-3">
+      <h2 class="title">レビュー詳細</h2>
       <div class="row">
         <div class="col-md-4">
           <%= image_tag @whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
         </div>
 
-        <div class="col-md-6 ml-1 mb-5">
+        <div class="col-md-7 ml-1 mb-5">
           <div class="mb-2">
-            <span class="mr-5">銘柄</span>
+            <span class="mr-3">銘柄</span>
             <%= @whiskey.name %>
           </div>
 
-          <div class="mb-2">
-            <span class="mr-4">感想</span>
-            <%= @whiskey.impression %>
+          <div class="mb-2 d-flex">
+            <div class="mr-4">感想</div>
+            <!--Railsのヘルパーメソッドであるsimple_formatで、改行が反映される-->
+            <div class="impression"><%= simple_format(@whiskey.impression) %></div>
           </div>
 
           <div class="mb-2">
-            <span class="mr-4">価格帯</span>
+            <span class="mr-3">価格帯</span>
             <%= @whiskey.price_range %>
           </div>
 
@@ -66,16 +68,16 @@
             <%= render "public/whiskeys/rate", whiskey: @whiskey %>
           </div>
 
-          <div id="favorite_buttons_<%= @whiskey.id %>">
-            <%= render "public/favorites/favorites", whiskey: @whiskey %>
-          </div>
-
           <div class="mt-2 mb-1">タグ</div>
           <% if @whiskey.tags.blank? %>
             <%= "タグはありません" %>
           <% else %>
            #<%= @whiskey.tags.map(&:tag).join(' #') %>
           <% end %>
+
+          <div id="favorite_buttons_<%= @whiskey.id %>">
+            <%= render "public/favorites/favorites", whiskey: @whiskey %>
+          </div>
         </div>
       </div>
 
@@ -89,7 +91,6 @@
 
         <div class="col-md-6 offset-1">
           <div id="comments_area">
-            
             <%= render "public/whiskey_comments/comments", whiskey: @whiskey %>
           </div>
         </div>
