@@ -1,27 +1,30 @@
-<h1>ユーザー一覧</h1>
+<h2 class="title">ユーザーリスト</h2>
 
-<% @users.each do |user| %>
-
-<%= link_to admin_user_path(user) do %>
-  <%= image_tag user.get_profile_image, size:"100x100", alt:"プロフィール画像" %>
-<% end %>
-
-<div>ニックネーム</div>
-<%= user.name %>
-
-<div>投稿数</div>
-<%= user.whiskeys.count %>
-
-<div><%= user.name %>様のコメント数</div>
-<%= user.whiskey_comments.count %>
-
-<div>登録状況</div>
-  <% if user.is_deleted == false %>
-    <p>有効</p>
-  <% else %>
-    <P>退会済み</P>
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="row d-flex justify-content-center mt-2 mb-5">
+      <div class="col-3 offset-2" >
+        <%= link_to admin_user_path(user) do %>
+          <%= image_tag user.get_profile_image, size:"150x150", alt:"プロフィール画像" %>
+        <% end %>
+      </div>
+      <div class="col-6 ml-4" >
+        <div>ニックネーム：<%= user.name %></div>
+  
+        <div class="mt-3">投稿数：<%= user.whiskeys.count %>件</div>
+  
+        <div class="mt-3">コメント数：<%= user.whiskey_comments.count %>件</div>
+  
+        <div class="mt-3">登録状況：
+          <% if user.is_deleted == false %>
+            有効
+          <% else %>
+            退会済み
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
-
-<% end %>
+</div>
 
 <%= paginate @users %>

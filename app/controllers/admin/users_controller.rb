@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @whiskeys = @user.whiskeys
+    @whiskeys = @user.whiskeys.page(params[:page]).per(5)
   end
 
   def edit
