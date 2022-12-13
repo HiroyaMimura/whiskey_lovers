@@ -1,4 +1,7 @@
-$("#comments_area").html("<%= j(render "public/whiskey_comments/comments", whiskey: @whiskey) %>");
 <% unless admin_signed_in? %>
 $("#favorite_buttons_<%= @whiskey.id %>").html("<%= j(render "public/favorites/favorites", whiskey: @whiskey) %>");
 <% end %>
+$("#comments_area").html("<%= j(render "public/whiskey_comments/comments", whiskey: @whiskey, comments: @comments) %>");
+$('.page-link').each(function(i){
+    $(this).attr('href', $(this).attr('href')?.replace(/\/whiskey_comments\/\d{1,4}/,'')?.split('&')[0]);
+});

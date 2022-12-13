@@ -1,15 +1,14 @@
 <%= flash[:notice] %>
+<h2 class="title">レビューリスト</h2>
 
 <div class="container_fulid">
   <div class="row">
     <%= render "public/whiskeys/tag", tag_list: @tag_list %>
 
-    <div class="col-sm-8 ml-5 mb-3">
-      <h2 class="title">レビューリスト</h2>
-
+    <div class="col-sm-8 ml-sm-5 mb-sm-3">
       <% @whiskeys.each do |whiskey| %>
         <div class="row">
-          <div class="col-md-4">
+          <div class="whiskey_image col-md-4">
             <%= link_to admin_whiskey_path(whiskey) do %>
               <%= image_tag whiskey.whiskey_image, size:"230x300", alt: "ウイスキーの写真" %>
             <% end %>

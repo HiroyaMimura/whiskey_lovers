@@ -1,8 +1,11 @@
-<div class="col-sm-3 ml-3 mt-5">
+<div class="searches_form col-sm-3 ml-md-4 pl-md-5 mb-3">
+  <% unless admin_signed_in? %>
+    <div><%= render 'layouts/searches_form' %></div>
+  <% end %>
   <table class="table-bordered">
     <thead class="tag_thead">
       <tr>
-        <th class="tag_title">タグリスト</th>
+        <th class="tag_title">タグ</th>
       </tr>
     </thead>
     <tbody>

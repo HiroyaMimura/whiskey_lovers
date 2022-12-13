@@ -1,9 +1,8 @@
-<div>コメント数：<%= whiskey.whiskey_comments.count %>件</div>
+<div>コメント数：全<%= whiskey.whiskey_comments.count %>件</div>
 
-
-<% whiskey.whiskey_comments.each do |comment| %>
+<% comments.each do |comment| %>
   <div class="row">
-    <div class="col-4 mt-3">
+    <div class="col-4 my-3">
       <% if admin_signed_in? %>
         <%= link_to admin_user_path(comment.user_id) do %>
           <%= image_tag comment.user.get_profile_image, size:"50x50" %>
@@ -28,3 +27,4 @@
   </div>
 <% end %>
 
+<%= paginate comments %>

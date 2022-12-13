@@ -13,7 +13,7 @@ class Whiskey < ApplicationRecord
   validates :performance, presence: true
 
   def self.search(word)
-    Whiskey.where("name LIKE?","%#{word}%")
+    Whiskey.where("name LIKE?", "%#{word}%")
   end
 
   def self.looks(price)

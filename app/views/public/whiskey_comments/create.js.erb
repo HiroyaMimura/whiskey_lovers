@@ -1,3 +1,6 @@
-$("#comments_area").html("<%= j(render "public/whiskey_comments/comments", whiskey: @whiskey) %>");
-$("textarea").val('');
 $("#favorite_buttons_<%= @whiskey.id %>").html("<%= j(render "public/favorites/favorites", whiskey: @whiskey) %>");
+$("#comments_area").html("<%= j(render "public/whiskey_comments/comments", whiskey: @whiskey, comments: @comments) %>");
+$("textarea").val('');
+$('.page-link').each(function(i){
+    $(this).attr('href', $(this).attr('href')?.replace('/whiskey_comments','')?.split('&')[0]);
+});

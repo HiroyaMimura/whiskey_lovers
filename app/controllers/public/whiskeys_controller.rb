@@ -9,6 +9,7 @@ class Public::WhiskeysController < ApplicationController
   def show
     @whiskey = Whiskey.find(params[:id])
     @whiskey_comment = WhiskeyComment.new
+    @comments = @whiskey.whiskey_comments.order('created_at DESC').page(params[:page]).per(4)
   end
 
   def new
