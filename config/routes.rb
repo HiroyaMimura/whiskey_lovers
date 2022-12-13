@@ -24,6 +24,7 @@ scope module: :public do
   get "searches_price"=>"searches#searches_price"
   get "users/unsubscribe"=>"users#unsubscribe", as: "unsubscribe"
   patch "users/withdrawal"=>"users#withdrawal", as: "withdrawal"
+  get "users/user_favorites"=>"users#user_favorites"
   resources:users, only: [:show,:edit,:update]
 end
 
