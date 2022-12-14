@@ -1,27 +1,26 @@
-<div>コメント数：全<%= whiskey.whiskey_comments.count %>件</div>
+<h4>コメント数：全<%= whiskey.whiskey_comments.count %>件</h4>
 
 <% comments.each do |comment| %>
   <div class="row">
     <div class="col-4 my-3">
       <% if admin_signed_in? %>
         <%= link_to admin_user_path(comment.user_id) do %>
-          <%= image_tag comment.user.get_profile_image, size:"50x50" %>
+          <%= image_tag comment.user.get_profile_image.variant(resize_to_fill: [60, 60]) %>
         <% end %>
       <% else %>
-        <%= image_tag comment.user.get_profile_image, size:"50x50" %>
+        <%= image_tag comment.user.get_profile_image.variant(resize_to_fill: [60, 60]) %>
       <% end %>
 
       <div><%= comment.user.name %></div>
 
-      <div>
+      <div class="mt-2">
         <% if comment.user == current_user || admin_signed_in? %>
           <%= link_to '消去する', whiskey_whiskey_comment_path(comment.whiskey.id,comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
         <% end %>
       </div>
     </div>
 
-    <div class="col-7 mt-3">
-      <div>コメント</div>
+    <div class="shadow col-7 mt-3">
       <div class="mt-2"><%= simple_format(comment.comment) %></div>
     </div>
   </div>

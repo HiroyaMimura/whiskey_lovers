@@ -1,6 +1,7 @@
 $("#favorite_buttons_<%= @whiskey.id %>").html("<%= j(render "public/favorites/favorites", whiskey: @whiskey) %>");
 $("#comments_area").html("<%= j(render "public/whiskey_comments/comments", whiskey: @whiskey, comments: @comments) %>");
 $("textarea").val('');
+<!--余計なURLを書き換える記述-->
 $('.page-link').each(function(i){
     $(this).attr('href', $(this).attr('href')?.replace('/whiskey_comments','')?.split('&')[0]);
 });

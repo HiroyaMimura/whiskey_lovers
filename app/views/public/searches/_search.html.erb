@@ -7,9 +7,9 @@
       <% unless whiskeys_search.blank? %>
         <% whiskeys_search.each do |whiskey| %>
           <div class="row">
-            <div class="whiskey_image col-md-4">
+            <div class="whiskey_image col-md-4 mt-md-4">
               <%= link_to whiskey_path(whiskey) do %>
-                <%= image_tag whiskey.whiskey_image, size:"230x300", alt: "ウイスキーの写真" %>
+                <%= image_tag whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
               <% end %>
             </div>
 

@@ -4,12 +4,12 @@ class Public::UsersController < ApplicationController
 
   def user_favorites
     @user = current_user
-    @favorites_list = @user.favorites.page(params[:page]).per(5)
+    @favorites_list = @user.favorites.order('created_at DESC').page(params[:page]).per(5)
   end
 
   def show
     @user = current_user
-    @whiskeys = @user.whiskeys.page(params[:page]).per(5)
+    @whiskeys = @user.whiskeys.order('created_at DESC').page(params[:page]).per(5)
   end
 
   def edit

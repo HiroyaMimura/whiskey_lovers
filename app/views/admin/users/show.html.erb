@@ -1,9 +1,9 @@
 <h2 class="title">ユーザー情報</h2>
   <div class="container_fulid">
     <div class="row">
-      <div class="profile col-sm-2 ml-sm-5 mt-sm-3">
+      <div class="profile col-sm-3 ml-sm-5 mt-sm-3">
         <div>
-          <%= image_tag @user.get_profile_image, size:"100x100", alt:"プロフィール画像" %>
+          <%= image_tag @user.get_profile_image.variant(resize_to_fill: [100, 100]), alt:"プロフィール画像" %>
 
           <div class="mt-2">ニックネーム</div>
           <p><%= @user.name %></p>
@@ -24,17 +24,17 @@
           </div>
         </div>
 
-      <div class="col-sm-8 ml-sm-5 mb-sm-3">
+      <div class="col-sm-8 ml-md-5 mb-sm-3">
         <% unless @whiskeys.blank? %>
           <% @whiskeys.each do |whiskey| %>
             <div class="row">
-              <div class="whiskey_image col-md-5">
+              <div class="whiskey_image col-md-4 mt-md-4">
                 <%= link_to admin_whiskey_path(whiskey) do %>
-                 <%= image_tag whiskey.whiskey_image, size:"300x380", alt: "ウイスキーの写真" %>
+                 <%= image_tag whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
                 <% end %>
               </div>
 
-              <div class="col-md-6 ml-2 mb-5">
+              <div class="col-md-7 ml-2 mb-5">
                 <div class="mb-2">
                   <span class="mr-5">銘柄</span>
                   <%= whiskey.name %>

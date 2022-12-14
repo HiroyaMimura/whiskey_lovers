@@ -3,9 +3,9 @@
 <h2 class="title">マイページ</h2>
   <div class="container_fulid">
     <div class="row">
-      <div class="profile col-sm-2 ml-sm-5 mt-sm-3">
+      <div class="profile col-sm-3 ml-sm-5 mt-sm-3">
         <div>
-          <%= image_tag @user.get_profile_image, size:"130x130", alt: "プロフィール画像" %>
+          <%= image_tag @user.get_profile_image.variant(resize_to_fill: [130, 130]), alt: "プロフィール画像" %>
 
           <p class="mt-4"><%= @user.name %></p>
 
@@ -25,12 +25,12 @@
           </div>
       </div>
 
-      <div class="col-sm-8 ml-sm-5 mb-sm-3">
+      <div class="col-sm-8 ml-md-5 mb-sm-3">
         <% @whiskeys.each do |whiskey| %>
           <div class="row">
-            <div class="whiskey_image col-md-4">
+            <div class="whiskey_image col-md-4 mt-md-4">
               <%= link_to whiskey_path(whiskey) do %>
-                <%= image_tag whiskey.whiskey_image, size:"230x300", alt: "ウイスキーの写真" %>
+                <%= image_tag whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
               <% end %>
             </div>
 

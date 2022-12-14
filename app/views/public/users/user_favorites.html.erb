@@ -3,7 +3,7 @@
     <div class="row">
       <div class="profile col-sm-2 ml-sm-5 mt-sm-3">
         <div>
-          <%= image_tag @user.get_profile_image, size:"130x130", alt: "プロフィール画像" %>
+          <%= image_tag @user.get_profile_image.variant(resize_to_fill: [130, 130]), alt: "プロフィール画像" %>
 
           <p class="mt-4"><%= @user.name %></p>
           <div>レビュー数：<%= @user.whiskeys.count %>件</div>
@@ -21,7 +21,7 @@
             <div class="row">
               <div class="whiskey_image col-md-4">
                 <%= link_to whiskey_path(list) do %>
-                  <%= image_tag list.whiskey.whiskey_image, size:"230x300", alt: "ウイスキーの写真" %>
+                  <%= image_tag list.whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
                 <% end %>
               </div>
 
