@@ -26,6 +26,7 @@ scope module: :public do
   patch "users/withdrawal"=>"users#withdrawal", as: "withdrawal"
   get "users/user_favorites"=>"users#user_favorites"
   resources:users, only: [:show,:edit,:update]
+  resources :notifications, only: [:index, :destroy]
 end
 
 namespace :admin do

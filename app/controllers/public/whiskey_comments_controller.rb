@@ -8,6 +8,7 @@ class Public::WhiskeyCommentsController < ApplicationController
     # コメント投稿者(user)のidを代入
     @whiskey_comment.user_id = current_user.id
     @whiskey_comment.save
+    @whiskey.create_notification_comment(current_user, @whiskey_comment.id)
     @comments = @whiskey.whiskey_comments.order('created_at DESC').page(params[:page]).per(4)
   end
 
