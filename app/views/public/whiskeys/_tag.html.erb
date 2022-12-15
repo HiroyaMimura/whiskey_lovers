@@ -1,0 +1,26 @@
+<div class="searches_form col-sm-3 ml-md-4 ml-sm-1 pl-md-5 mb-3">
+  <% unless admin_signed_in? %>
+    <div><%= render 'layouts/searches_form' %></div>
+  <% end %>
+  <table class="table-bordered">
+    <thead class="tag_thead">
+      <tr>
+        <th class="tag_title">タグ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tag_list.each do |list|%>
+        <tr>
+          <td>
+            <% unless admin_signed_in? %>
+              <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
+            <% else %>
+              <%= list.tag %>
+            <% end %>
+              <%="(#{list.whiskeys.count})" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

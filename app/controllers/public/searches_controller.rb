@@ -7,7 +7,7 @@ class Public::SearchesController < ApplicationController
     if @word.blank?
       redirect_to whiskeys_path
     else
-      @whiskeys_search = Kaminari.paginate_array(Whiskey.search(@word)).page(params[:page]).per(5)
+      @whiskeys_search = Whiskey.search(@word).order('created_at DESC').page(params[:page]).per(5)
     end
   end
 
@@ -17,7 +17,7 @@ class Public::SearchesController < ApplicationController
     if @word.blank?
       redirect_to whiskeys_path
     else
-      @whiskeys_search = Kaminari.paginate_array(Whiskey.looks(@word)).page(params[:page]).per(5)
+      @whiskeys_search = Whiskey.looks(@word).order('created_at DESC').page(params[:page]).per(5)
     end
   end
 
@@ -25,6 +25,6 @@ class Public::SearchesController < ApplicationController
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @word = @tag.tag
-    @whiskeys_search = @tag.whiskeys.page(params[:page]).per(5)
+    @whiskeys_search = @tag.whiskeys.order('created_at DESC').page(params[:page]).per(5)
   end
 end

@@ -1,0 +1,84 @@
+<h2 class="title">お気に入りリスト</h2>
+  <div class="container_fulid">
+    <div class="row">
+      <div class="profile col-sm-2 ml-sm-5 mt-sm-3">
+        <div>
+          <%= image_tag @user.get_profile_image.variant(resize_to_fill: [130, 130]), alt: "プロフィール画像" %>
+
+          <p class="mt-4"><%= @user.name %></p>
+          <div>レビュー数：<%= @user.whiskeys.count %>件</div>
+          <div>
+            <% if @user.name != "ゲストユーザー" %>
+             <%= link_to "プロフィール編集", edit_user_path(@user), class:"link my-3  text-white btn btn-sm btn-outline-secondary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-8 ml-sm-5 mb-sm-3">
+        <% unless @favorites_list.blank? %>
+          <% @favorites_list.each do |list| %>
+            <div class="row">
+              <div class="whiskey_image col-md-4">
+                <%= link_to whiskey_path(list) do %>
+                  <%= image_tag list.whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
+                <% end %>
+              </div>
+
+              <div class="col-md-7 ml-2 mb-5">
+                <div class="mb-2">
+                  <span class="mr-5">銘柄</span>
+                  <%= list.whiskey.name %>
+                </div>
+
+                <div class="mb-2">
+                  <span class="mr-4">価格帯</span>
+                  <%= list.whiskey.price_range %>
+                </div>
+
+                <div class="taste_scent_graph">
+                  <div>ライト</div>
+                  <div class="graph1">
+                    <div style="padding-left: <%= list.whiskey.taste %>px;"></div>
+                    <div class="point"></div>
+                  </div>
+                  <div>リッチ</div>
+                </div>
+
+                <div class="taste_scent_graph">
+                  <div>フルーティー</div>
+                  <div class="graph2">
+                    <div style="padding-left: <%= list.whiskey.scent %>px;"></div>
+                    <div class="point"></div>
+                  </div>
+                  <div>スモーキー</div>
+                </div>
+
+                <div>コストパフォーマンス</div>
+                <div>
+                  <%= render "public/whiskeys/rate", whiskey: list.whiskey %>
+                </div>
+
+                <div class="mt-2 mb-1">タグ</div>
+                <div>
+                  <% if list.whiskey.tags.blank? %>
+                    <%= "タグはありません" %>
+                  <% else %>
+                   #<%= list.whiskey.tags.map(&:tag).join(' #') %>
+                  <% end %>
+                </div>
+
+                <div id="favorite_buttons_<%= list.whiskey.id %>">
+                  <%= render "public/favorites/favorites", whiskey: list.whiskey %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <h3 class="offset-3 mt-5">お気に入りはありません</h3>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<%= paginate @favorites_list %>

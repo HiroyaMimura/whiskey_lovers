@@ -10,22 +10,31 @@ class User < ApplicationRecord
   has_many :whiskeys, dependent: :destroy
   has_many :whiskey_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key:"visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key:"visited_id", dependent: :destroy
 
-  # def get_profile_image
-  #   unless profile_image.attached?
-  #     file_path = Rails.root.join('app/assets/images/no_image.jpg')
-  #     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  #   end
-  #     profile_image
-  # end
-  
-  # is_deletedがfalseならtrueを返すようにしている
-  def active_for_authentication?
-    super && (is_deleted == false)
+  validate :image_content_type, if: :was_attached?
+
+  def image_content_type
+    extension = ['image/png', 'image/jpg', 'image/jpeg']
+    errors.add(:image, "の拡張子が間違っています") unless profile_image.content_type.in?(extension)
+  end
+
+  def was_attached?
+    self.profile_image.attached?
   end
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    unless profile_image.attached?
+      file_path=Rails.root.join('app/assets/images/no_image.jpg')
+      profile_image.attach(io:File.open(file_path),filename:'default-image.jpg',content_type:'image/jpeg')
+    end
+      profile_image
+  end
+
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
 
   def self.guest

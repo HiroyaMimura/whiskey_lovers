@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_04_041713) do
+ActiveRecord::Schema.define(version: 2022_12_14_053037) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,21 @@ ActiveRecord::Schema.define(version: 2022_12_04_041713) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_favorites_on_user_id"
     t.index ["whiskey_id"], name: "index_favorites_on_whiskey_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "whiskey_id"
+    t.integer "whiskey_comment_id"
+    t.string "action", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+    t.index ["whiskey_comment_id"], name: "index_notifications_on_whiskey_comment_id"
+    t.index ["whiskey_id"], name: "index_notifications_on_whiskey_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -115,6 +130,10 @@ ActiveRecord::Schema.define(version: 2022_12_04_041713) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "users"
   add_foreign_key "favorites", "whiskeys"
+  add_foreign_key "notifications", "users", column: "visited_id"
+  add_foreign_key "notifications", "users", column: "visitor_id"
+  add_foreign_key "notifications", "whiskey_comments"
+  add_foreign_key "notifications", "whiskeys"
   add_foreign_key "whiskey_tags", "tags"
   add_foreign_key "whiskey_tags", "whiskeys"
 end

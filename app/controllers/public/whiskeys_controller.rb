@@ -2,13 +2,14 @@ class Public::WhiskeysController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @whiskeys = Whiskey.page(params[:page]).per(5)
+    @whiskeys = Whiskey.order('created_at DESC').page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
   def show
     @whiskey = Whiskey.find(params[:id])
     @whiskey_comment = WhiskeyComment.new
+    @comments = @whiskey.whiskey_comments.order('created_at DESC').page(params[:page]).per(4)
   end
 
   def new
@@ -19,6 +20,10 @@ class Public::WhiskeysController < ApplicationController
   def edit
     @whiskey = Whiskey.find(params[:id])
     @tag_list = @whiskey.tags.pluck(:tag).join(',')
+    unless @whiskey.user_id == current_user.id
+      flash[:notice] = "他の方の投稿は編集できません"
+      redirect_to whiskeys_path
+    end
   end
 
   def create

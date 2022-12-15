@@ -24,12 +24,19 @@ nav {
   color: #FFFFFF;
   font-size: 26px;
   margin: auto;
-  margin-left: 40px;
+  margin-left: 60px;
 }
 
 // 各ボタン
 .link {
   background-color: #573e24;
+}
+// お知らせ通知
+.circle {
+  position: absolute;
+  padding-left: 70px;
+  margin-top: -18px;
+  color: #ff9800;
 }
 
 // タグ
@@ -68,10 +75,10 @@ nav {
 
 .image {
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
 }
 
-// フッターの配置
+// フッターの最下部への配置
 .footerFixed{
     min-height: 100vh; /* コンテンツの高さの最小値＝ブラウザの高さに指定 */
     position: relative;/* 相対位置 */
@@ -111,6 +118,16 @@ footer {
   color: #FFFFFF;
   font-size: 25px;
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  // 半角英数折返しの設定
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.impression {
+  width: 350px;
 }
 
 //range_feildのデザイン
@@ -188,12 +205,13 @@ input[type="range"] {
   background-color: white;
   justify-content: center;
   border-radius: 0;
+  margin: 40px 0;
 }
 
 @media screen and (max-width:768px) {
 
 // トップ画面のメッセージ
-  .message, .message2 {
+.message, .message2 {
   display: none;
   margin-bottom: 0;
   line-height: 40px;
@@ -203,10 +221,46 @@ input[type="range"] {
   background-color: rgba(0, 0, 0, 0.3);
   }
 
+.logo {
+  margin-left: 30px;
+}
+
 // ログアウトメッセージ
-  .logout {
+.logout {
   color: #FFFFFF;
   font-size: 13px;
+}
+
+// お知らせ通知
+.circle {
+  position: absolute;
+  padding-left: 10px;
+  margin-top: -33px;
+  color: #ff9800;
+}
+
+.whiskey_image {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0 20px 0;
+}
+
+.table-bordered {
+  margin: 0 20px;
+}
+
+}
+
+@media screen and (max-width:576px) {
+
+.searches_form {
+  display: flex;
+  justify-content: center;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
 }
 
 }

@@ -3,6 +3,7 @@ class Admin::WhiskeysController < ApplicationController
 
   def show
    @whiskey = Whiskey.find(params[:id])
+   @comments = @whiskey.whiskey_comments.order('created_at DESC').page(params[:page]).per(4)
   end
 
   def destroy

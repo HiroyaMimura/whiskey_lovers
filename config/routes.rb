@@ -24,13 +24,16 @@ scope module: :public do
   get "searches_price"=>"searches#searches_price"
   get "users/unsubscribe"=>"users#unsubscribe", as: "unsubscribe"
   patch "users/withdrawal"=>"users#withdrawal", as: "withdrawal"
+  get "users/user_favorites"=>"users#user_favorites"
   resources:users, only: [:show,:edit,:update]
+  resources :notifications, only: [:index, :destroy]
 end
 
 namespace :admin do
   root to:'homes#top'
   resources:whiskeys, only: [:show,:destroy]
   resources:users, only: [:index,:show,:edit,:update]
+  resources:whiskey_comments, only: [:destroy]
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

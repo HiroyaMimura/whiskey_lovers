@@ -1,0 +1,9 @@
+<div class="row d-flex justify-content-center">
+  <div class="shadow my-3 p-2">
+   <%= notification_form(notification) %>
+   <span><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+   <% if !@whiskey_comment.nil? %>
+    <p class="text-center mt-1"><%= @whiskey_comment.comment %></p>
+  <% end %>
+  </div>
+</div>

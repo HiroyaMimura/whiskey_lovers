@@ -2,9 +2,14 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
 
+  def user_favorites
+    @user = current_user
+    @favorites_list = @user.favorites.order('created_at DESC').page(params[:page]).per(5)
+  end
+
   def show
     @user = current_user
-    @whiskeys = @user.whiskeys.page(params[:page]).per(5)
+    @whiskeys = @user.whiskeys.order('created_at DESC').page(params[:page]).per(5)
   end
 
   def edit

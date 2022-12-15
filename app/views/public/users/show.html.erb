@@ -3,27 +3,34 @@
 <h2 class="title">マイページ</h2>
   <div class="container_fulid">
     <div class="row">
-      <div class="col-sm-2 ml-5 mt-3">
+      <div class="profile col-sm-3 ml-sm-5 mt-sm-3">
         <div>
-          <%= image_tag @user.get_profile_image, size:"130x130", alt: "プロフィール画像" %>
-        </div>
-        <p class="mt-4">
-          <%= @user.name %>
-        </p>
-        <div>レビュー数 (<%= @user.whiskeys.count %>)</div>
-        <div>
-          <% if @user.name != "ゲストユーザー" %>
-           <%= link_to "プロフィール編集", edit_user_path(@user), class:"link my-3  text-white btn btn-sm btn-outline-secondary" %>
-          <% end %>
-        </div>
+          <%= image_tag @user.get_profile_image.variant(resize_to_fill: [130, 130]), alt: "プロフィール画像" %>
+
+          <p class="mt-4"><%= @user.name %></p>
+
+          <div>レビュー数：<%= @user.whiskeys.count %>件</div>
+
+          <div>
+            <% if @user.name != "ゲストユーザー" %>
+             <%= link_to "プロフィール編集", edit_user_path(@user), class:"link my-3  text-white btn btn-sm btn-outline-secondary" %>
+            <% end %>
+          </div>
+
+          <div>
+            <% if @user == current_user %>
+             <%= link_to "お気に入りリスト", users_user_favorites_path, class:"link my-3  text-white btn btn-sm btn-outline-secondary" %>
+            <% end %>
+          </div>
+          </div>
       </div>
 
-      <div class="col-sm-8 ml-5 mb-3">
+      <div class="col-sm-8 ml-md-5 mb-sm-3">
         <% @whiskeys.each do |whiskey| %>
           <div class="row">
-            <div class="col-md-4">
+            <div class="whiskey_image col-md-4 mt-md-4">
               <%= link_to whiskey_path(whiskey) do %>
-                <%= image_tag whiskey.whiskey_image, size:"230x300", alt: "ウイスキーの写真" %>
+                <%= image_tag whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
               <% end %>
             </div>
 
