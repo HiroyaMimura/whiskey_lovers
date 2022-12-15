@@ -75,7 +75,7 @@ nav {
 
 .image {
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 // フッターの最下部への配置
@@ -220,6 +220,10 @@ input[type="range"] {
   font-size: 15px;
   background-color: rgba(0, 0, 0, 0.3);
   }
+
+.logo {
+  margin-left: 30px;
+}
 
 // ログアウトメッセージ
 .logout {

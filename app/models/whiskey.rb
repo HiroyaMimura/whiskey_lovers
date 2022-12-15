@@ -13,6 +13,17 @@ class Whiskey < ApplicationRecord
   validates :performance, presence: true
   has_many :notifications, dependent: :destroy
 
+  validate :image_content_type, if: :was_attached?
+
+  def image_content_type
+    extension = ['image/png', 'image/jpg', 'image/jpeg']
+    errors.add(:image, "の拡張子が間違っています") unless whiskey_image.content_type.in?(extension)
+  end
+
+  def was_attached?
+    self.whiskey_image.attached?
+  end
+
   def self.search(word)
     Whiskey.where("name LIKE?", "%#{word}%")
   end

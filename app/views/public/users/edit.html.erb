@@ -31,15 +31,15 @@
       <% end %>
     </div>
 
-    <div class="form-group d-flex justify-content-center">
+    <h4 class="text-center">
       <% if @user.errors.any? %>
         <%= @user.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+    </h4>
+    <ul class="text-center">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
-    </div>
+    </ul>
+      <% end %>
   </div>
 </div>
