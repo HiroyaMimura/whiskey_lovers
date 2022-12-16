@@ -11,9 +11,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Deploy
       env:
-        PRIVATE_KEY: ${{ repository secrets.PRIVATE_KEY }}
-        USER_NAME: ${{ repository secrets.USER_NAME }}
-        HOST_NAME: ${{ repository secrets.HOST_NAME }}
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        USER_NAME: ${{ secrets.USER_NAME }}
+        HOST_NAME: ${{ secrets.HOST_NAME }}
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd whiskey_lovers &&
