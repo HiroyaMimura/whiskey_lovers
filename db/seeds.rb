@@ -11,7 +11,7 @@
      password: ENV['SECRET_KEY'],
   )
 
-  5.times do |n|
+  4.times do |n|
     User.create!(
       email: "test#{n + 1}@test.com",
       name: "飲兵衛#{n + 1}",
@@ -22,10 +22,10 @@
     Whiskey.create!(
       user_id: '1',
       name: 'TALISKER',
-      impression: '好きな味わいです',
-      taste: '100',
+      impression: 'ロック、ハイボールがおすすめです。',
+      taste: '130',
       scent: '200',
-      price_range: '2000円〜4000円',
+      price_range: '4000円〜6000円',
       performance: '4',
       whiskey_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join('app/assets/images/image10.jpg')),
       filename: 'image10.jpg')
@@ -34,9 +34,9 @@
     Whiskey.create!(
       user_id: '1',
       name: 'イチローズモルト',
-      impression: '飲みやすいです',
-      taste: '70',
-      scent: '100',
+      impression: 'ジャパニーズウイスキーです。',
+      taste: '80',
+      scent: '110',
       price_range: '4000円〜6000円',
       performance: '3',
       whiskey_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join('app/assets/images/image1.jpg')),
@@ -46,11 +46,11 @@
     Whiskey.create!(
       user_id: '2',
       name: 'BOWMORE',
-      impression: '美味しいです',
+      impression: '程よいスモーク香です。',
       taste: '100',
       scent: '170',
       price_range: '4000円〜6000円',
-      performance: '3',
+      performance: '3.5',
       whiskey_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join('app/assets/images/image9.jpg')),
       filename: 'image9.jpg')
       )
@@ -58,13 +58,25 @@
     Whiskey.create!(
       user_id: '2',
       name: 'ARDBEG',
-      impression: 'かなりスモーキーです',
+      impression: 'クセが強いのが好きな方にぴったりです。',
       taste: '130',
       scent: '235',
       price_range: '4000円〜6000円',
       performance: '3.5',
       whiskey_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join('app/assets/images/image14.jpg')),
       filename: 'image14.jpg')
+      )
+
+    Whiskey.create!(
+      user_id: '1',
+      name: 'WOODFORD RESERVE',
+      impression: '上品で味わいに深みがあります。',
+      taste: '190',
+      scent: '125',
+      price_range: '4000円〜6000円',
+      performance: '3.5',
+      whiskey_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join('app/assets/images/image6.jpg')),
+      filename: 'image6.jpg')
       )
 
     Tag.create!(
@@ -82,13 +94,16 @@
           tag: 'ハマる'
         },
         {
-          tag: 'コスパが良い'
+          tag: 'コスパ良い'
         },
         {
           tag: 'スモーキー最高'
         },
         {
           tag: '飲みやすい'
+        },
+        {
+          tag: '上品'
         }
       ]
     )
@@ -131,6 +146,10 @@
         {
           whiskey_id: '4',
           tag_id: '6'
+        },
+        {
+          whiskey_id: '5',
+          tag_id: '8'
         },
       ]
     )
