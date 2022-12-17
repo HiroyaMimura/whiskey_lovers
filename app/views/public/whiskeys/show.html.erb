@@ -87,7 +87,7 @@
   <div class="row mt-3 mb-5">
     <div class="col-md-4 ml-md-5 mb-3">
       <%= form_with model: [@whiskey, @whiskey_comment], local: false do |f| %>
-        <%= f.text_area :comment, size: "40x5", placeholder: "コメントはここに" %><br>
+        <%= f.text_area :comment, size: "35x5", placeholder: "コメントはここに" %><br>
         <%= f.submit "送信", class: "link text-white btn btn-outline-secondary" %>
       <% end %>
     </div>
