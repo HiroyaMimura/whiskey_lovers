@@ -4,7 +4,7 @@
         <!--ユーザー用のヘッダー-->
         <% if user_signed_in? %>
         <div class="logo">
-          <a class="navbar" href="/whiskeys"><%= image_tag 'logo.png', size: '80x80' %></a>
+          <a class="navbar" href="/whiskeys"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
         </div>
 
         <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,19 +13,19 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
 
-            <li class="link mx-4"><%= link_to "お知らせ", notifications_path, class: 'nav-link text-white btn btn-outline-secondary' %>
+            <li class="link mx-4"><%= link_to "Notification", notifications_path, class: 'nav-link text-white btn btn-outline-secondary' %>
             <% if unchecked_notifications.any? %>
              <div class="circle"><i class="fas fa-circle"></i></div>
             <% end %></li>
-            <li class="link mx-4"><%= link_to "マイページ", user_path(current_user), class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="link mx-4"><%= link_to "投稿する", new_whiskey_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="link mx-4"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "My page", user_path(current_user), class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "New post", new_whiskey_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
           </ul>
         </div>
         <!--管理人のヘッダー-->
         <% elsif admin_signed_in? %>
         <div class="logo">
-          <a class="navbar" href="/admin"><%= image_tag 'logo.png', size: '80x80' %></a>
+          <a class="navbar" href="/admin"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
         </div>
         <p class="admin_title">管理者画面</p>
         <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,22 +33,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            <li class="link mx-4"><%= link_to "ユーザーリスト", admin_users_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="link mx-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "User list", admin_users_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
           </ul>
         </div>
         <% else %>
         <div class="logo">
-          <a class="navbar" href="/"><%= image_tag 'logo.png', size: '80x80' %></a>
+          <a class="navbar" href="/"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
         </div>
         <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            <li class="link mx-4"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="link mx-4"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-            <li class="link mx-4"><%= link_to "ゲストログイン", users_guest_sign_in_path, class: 'nav-link text-white btn btn-outline-secondary', method: :post %></li>
+            <li class="link mx-4"><%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "Sign in", new_user_session_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+            <li class="link mx-4"><%= link_to "Guest log in", users_guest_sign_in_path, class: 'nav-link text-white btn btn-outline-secondary', method: :post %></li>
           </ul>
         </div>
         <% end %>

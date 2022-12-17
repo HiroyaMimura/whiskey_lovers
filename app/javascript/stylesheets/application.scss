@@ -117,6 +117,7 @@ footer {
   text-align: center;
   color: #FFFFFF;
   font-size: 25px;
+  font-family: 'YuMincho','Yu Mincho',sans-serif;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -172,7 +173,7 @@ input[type="range"] {
 .graph1 {
   height: 15px;
   width: 270px;
-  margin: 4px 8px 0 54px;
+  margin: 4px 8px 0 15px;
   background-color: #e9d9cf;
   border-radius: 5px;
   display: flex;
@@ -217,12 +218,17 @@ input[type="range"] {
   line-height: 40px;
   text-align: center;
   color: #FFFFFF;
-  font-size: 15px;
+  font-size: 13px;
   background-color: rgba(0, 0, 0, 0.3);
   }
 
 .logo {
   margin-left: 30px;
+}
+
+.logo_size {
+  width: 60px;
+  height: 60px;
 }
 
 // ログアウトメッセージ
@@ -247,6 +253,19 @@ input[type="range"] {
 
 .table-bordered {
   margin: 0 20px;
+}
+
+.graph1 {
+  height: 15px;
+  width: 270px;
+  margin: 4px 8px 0 14px;
+  background-color: #e9d9cf;
+  border-radius: 5px;
+  display: flex;
+}
+
+.unsubscribe {
+  font-size: 13px;
 }
 
 }

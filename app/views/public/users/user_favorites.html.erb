@@ -1,4 +1,4 @@
-<h2 class="title">お気に入りリスト</h2>
+<h2 class="title">Favorites list</h2>
   <div class="container_fulid">
     <div class="row">
       <div class="profile col-sm-2 ml-sm-5 mt-sm-3">
@@ -6,7 +6,7 @@
           <%= image_tag @user.get_profile_image.variant(resize_to_fill: [130, 130]), alt: "プロフィール画像" %>
 
           <p class="mt-4"><%= @user.name %></p>
-          <div>レビュー数：<%= @user.whiskeys.count %>件</div>
+          <div>Reviews：(<%= @user.whiskeys.count %>)</div>
           <div>
             <% if @user.name != "ゲストユーザー" %>
              <%= link_to "プロフィール編集", edit_user_path(@user), class:"link my-3  text-white btn btn-sm btn-outline-secondary" %>
@@ -27,39 +27,39 @@
 
               <div class="col-md-7 ml-2 mb-5">
                 <div class="mb-2">
-                  <span class="mr-5">銘柄</span>
+                  <span class="mr-4">name</span>
                   <%= list.whiskey.name %>
                 </div>
 
                 <div class="mb-2">
-                  <span class="mr-4">価格帯</span>
+                  <span class="mr-4">price</span>
                   <%= list.whiskey.price_range %>
                 </div>
 
                 <div class="taste_scent_graph">
-                  <div>ライト</div>
+                  <div>light</div>
                   <div class="graph1">
                     <div style="padding-left: <%= list.whiskey.taste %>px;"></div>
                     <div class="point"></div>
                   </div>
-                  <div>リッチ</div>
+                  <div>rich</div>
                 </div>
 
                 <div class="taste_scent_graph">
-                  <div>フルーティー</div>
+                  <div>fruity</div>
                   <div class="graph2">
                     <div style="padding-left: <%= list.whiskey.scent %>px;"></div>
                     <div class="point"></div>
                   </div>
-                  <div>スモーキー</div>
+                  <div>smokey</div>
                 </div>
 
-                <div>コストパフォーマンス</div>
+                <div>cost performance</div>
                 <div>
                   <%= render "public/whiskeys/rate", whiskey: list.whiskey %>
                 </div>
 
-                <div class="mt-2 mb-1">タグ</div>
+                <div class="mt-2 mb-1">tag</div>
                 <div>
                   <% if list.whiskey.tags.blank? %>
                     <%= "タグはありません" %>

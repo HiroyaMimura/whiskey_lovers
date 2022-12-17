@@ -1,4 +1,4 @@
-<h2 class="title">"<%= word %>"検索結果</h2>
+<h2 class="title">Search results<br>"<%= word %>"</h2>
 <div class="container_fulid">
   <div class="row">
     <%= render "public/whiskeys/tag", tag_list: @tag_list %>
@@ -15,44 +15,44 @@
 
             <div class="col-md-7 ml-2 mb-5">
               <div class="mb-2">
-                <span class="mr-4">投稿者</span>
+                <span class="mr-4">name</span>
                 <%= whiskey.user.name %>
               </div>
 
               <div class="mb-2">
-                <span class="mr-5">銘柄</span>
+                <span class="mr-5">brand</span>
                 <%= whiskey.name %>
               </div>
 
               <div class="mb-2">
-                <span class="mr-4">価格帯</span>
+                <span class="mr-4">price</span>
                 <%= whiskey.price_range %>
               </div>
 
               <div class="taste_scent_graph">
-                <div>ライト</div>
+                <div>light</div>
                 <div class="graph1">
                   <div style="padding-left: <%= whiskey.taste %>px;"></div>
                   <div class="point"></div>
                 </div>
-                <div>リッチ</div>
+                <div>rich</div>
               </div>
 
               <div class="taste_scent_graph">
-                <div>フルーティー</div>
+                <div>fruity</div>
                 <div class="graph2">
                   <div style="padding-left: <%= whiskey.scent %>px;"></div>
                   <div class="point"></div>
                 </div>
-                <div>スモーキー</div>
+                <div>smokey</div>
               </div>
 
-              <div>コストパフォーマンス</div>
+              <div>cost performance</div>
               <div>
                 <%= render "public/whiskeys/rate", whiskey: whiskey %>
               </div>
 
-              <div class="mt-2 mb-1">タグ</div>
+              <div class="mt-2 mb-1">tag</div>
               <div>
                 <% if whiskey.tags.blank? %>
                   <%= "タグはありません" %>
