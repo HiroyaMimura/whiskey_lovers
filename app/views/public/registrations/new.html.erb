@@ -9,24 +9,24 @@
     <div class="form-group d-flex justify-content-center">
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
         <div class="field my-2">
-          <%= f.label :"ニックネーム"%><br />
+          <%= f.label :"Nickname"%><br />
           <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
         </div>
         <div class="field my-2">
-          <%= f.label :"メールアドレス" %><br />
+          <%= f.label :"E-mail" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
         <div class="field my-2">
-          <%= f.label :"パスワード(6文字以上)" %>
+          <%= f.label :"Password(6文字以上)" %>
           <% if @minimum_password_length %>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
         <div class="field my-2">
-          <%= f.label :"パスワード(確認用)" %><br />
+          <%= f.label :"Password(確認用)" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
-          <%= f.submit "登録する", class:"link my-3  text-white btn btn-outline-secondary" %>
+          <%= f.submit "Sign up", class:"link my-3  text-white btn btn-outline-secondary" %>
       <% end %>
     </div>
 

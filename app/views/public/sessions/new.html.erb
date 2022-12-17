@@ -5,15 +5,15 @@
     <div class="form-group d-flex justify-content-center">
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <div class="field my-3">
-          <%= f.label :"メールアドレス" %><br />
+          <%= f.label :"E-mail" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
         <div class="field my-3">
-          <%= f.label :"パスワード" %><br />
+          <%= f.label :"Password" %><br />
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
-          <%= f.submit "ログイン", class:"link my-3  text-white btn btn-outline-secondary" %>
+          <%= f.submit "Log in", class:"link my-3  text-white btn btn-outline-secondary" %>
       <% end %>
     </div>
 
