@@ -27,6 +27,9 @@ scope module: :public do
   get "users/user_favorites"=>"users#user_favorites"
   resources:users, only: [:show,:edit,:update]
   resources :notifications, only: [:index, :destroy]
+  resource :contacts, only: [:new, :create] do
+    get "/thanks" => "contacts#thanks"
+  end
 end
 
 namespace :admin do

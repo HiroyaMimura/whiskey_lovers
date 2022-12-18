@@ -1,11 +1,17 @@
 <div class="col-md-12 mx-auto text-center pt-3">
   <i class="fab fa-facebook fa-2x"></i>
 
-  <i class="fab fa-twitter fa-2x mx-3"></i>
+  <i class="fab fa-twitter fa-2x mx-4"></i>
 
   <i class="fab fa-instagram fa-2x"></i>
 </div>
 
+<p class ="text-center mt-3">
+  <% if user_signed_in? %>
+    <%= link_to "お問い合わせ", new_contacts_path %>
+  <% end %>
+</p>
+
 <div class="col-md-12 mx-auto text-center">
-  <p class="pt-2">&copy;whiskey lovers</p>
+  <p>&copy;whiskey lovers</p>
 </div>

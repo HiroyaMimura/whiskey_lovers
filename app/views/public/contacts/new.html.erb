@@ -1,0 +1,46 @@
+<h2 class='title'>Inquiries</h2>
+
+<div class="text-center">
+  <% if @contact.errors.any? %>
+  <h4><%= @contact.errors.count %>件のエラーが発生しました</h4>
+    <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="d-flex justify-content-center mb-5">
+  <%= form_with model: @contact, local: true do |f| %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text" for="name">Name</label>
+        <span class="badge badge-danger">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :name, class:"input-name", id:"name", placeholder:"例) 田中太郎" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text" for="email">E-mail</label>
+        <span class="badge badge-danger">必須</span>
+      </div>
+      <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true, size: "30x5" %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text" for="content">Content</label>
+        <span class="badge badge-danger">必須</span>
+      </div>
+      <%= f.text_area :content, class:"article-input-default", id:"content", autofocus: true, size: "35x5" %>
+    </div>
+
+    <div class='text-center mb-5'>
+      <%= f.submit "送信" ,class:"link btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
