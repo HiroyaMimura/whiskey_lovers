@@ -22,14 +22,14 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    flash[:notice1] = 'ゲストログインしました。'
-    flash[:notice2] = 'ロゴをクリックするとレビューリストへ遷移します。'
+    flash[:notice] = 'ゲストログインしました。'
+    flash[:notice1] = 'ロゴをクリックするとレビューリストへ遷移します。'
     redirect_to whiskeys_path
   end
 
   def after_sign_in_path_for(resource)
-    flash[:notice1] = 'ログインしました。'
-    flash[:notice2] = 'ロゴをクリックするとレビューリストへ遷移します。'
+    flash[:notice] = 'ログインしました。'
+    flash[:notice1] = 'ロゴをクリックするとレビューリストへ遷移します。'
     whiskeys_path
   end
 
