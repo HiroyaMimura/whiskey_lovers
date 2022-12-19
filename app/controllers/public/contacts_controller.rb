@@ -7,7 +7,7 @@ class Public::ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    if @contact.save
+    if verify_recaptcha(model: @contact) && @contact.save
       ContactMailer.contact_mail(@contact).deliver
       redirect_to thanks_contacts_path
     else

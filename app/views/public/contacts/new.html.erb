@@ -38,6 +38,9 @@
       </div>
       <%= f.text_area :content, class:"article-input-default", id:"content", autofocus: true, size: "35x5" %>
     </div>
+    <div class="my-2">
+      <%= recaptcha_tags %>
+    </div>
 
     <div class='text-center mb-5'>
       <%= f.submit "送信" ,class:"link btn btn-secondary" %>
