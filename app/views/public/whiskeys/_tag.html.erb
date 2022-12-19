@@ -1,26 +1,21 @@
-<div class="searches_form col-sm-3 ml-md-4 ml-sm-1 pl-md-5 mb-3">
+<div class="searches_form col-sm-3 ml-md-4 mx-2 pl-md-5 mb-3">
   <% unless admin_signed_in? %>
     <div><%= render 'layouts/searches_form' %></div>
   <% end %>
-  <table class="table-bordered">
-    <thead class="tag_thead">
-      <tr>
-        <th class="tag_title">Tag</th>
-      </tr>
-    </thead>
-    <tbody>
+
+  <div>
+    <h4 class="ml-4"><i class="fas fa-tag"></i>Tag</h4>
+    <div class="d-flex flex-wrap">
       <% tag_list.each do |list|%>
-        <tr>
-          <td>
-            <% unless admin_signed_in? %>
-              <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
-            <% else %>
-              <%= list.tag %>
-            <% end %>
-              <%="(#{list.whiskeys.count})" %>
-          </td>
-        </tr>
+        <div class="tag">
+          <% unless admin_signed_in? %>
+            <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
+          <% else %>
+            <%= list.tag %>
+          <% end %>
+            <%="(#{list.whiskeys.count})" %>
+        </div>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 </div>

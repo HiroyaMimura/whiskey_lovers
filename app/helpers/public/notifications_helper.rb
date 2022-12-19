@@ -12,7 +12,7 @@ module Public::NotificationsHelper
       tag.a(@visitor.name) + 'が' + tag.a("#{@whiskey_name}", href: whiskey_path(notification.whiskey_id)) + 'にコメントしました'
     end
   end
-  
+
   def unchecked_notifications
     @notifications = current_user.passive_notifications.where(checked: false)
   end
