@@ -67,16 +67,6 @@ nav {
   color: #ff9800;
 }
 
-// タグ
-// .tag_thead {
-//   background-color: #372312;
-//   color: white;
-// }
-
-// .tag_title {
-//   text-align: center;
-// }
-
 .tag {
   color: #FFFFFF;
   background-color: #573e24;
@@ -233,6 +223,10 @@ input[type="range"] {
   justify-content: center;
   border-radius: 0;
   margin: 40px 0;
+}
+
+.contacts a {
+  color: #000000;
 }
 
 @media screen and (max-width:768px) {
