@@ -19,7 +19,7 @@ body {
 .footerFixed{
   height: auto !important;
   height: 100%;
-  min-height: 100vh; 
+  min-height: 100vh;
   position: relative;
 }
 
@@ -298,7 +298,10 @@ input[type="range"] {
 .profile {
   display: flex;
   justify-content: center;
-  margin-left: 30px;
+}
+
+.no_whiskey {
+  text-align: center;
 }
 
 }

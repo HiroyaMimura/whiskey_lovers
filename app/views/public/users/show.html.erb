@@ -26,62 +26,66 @@
       </div>
 
       <div class="col-sm-8 ml-md-5 mb-sm-3">
-        <% @whiskeys.each do |whiskey| %>
-          <div class="row">
-            <div class="whiskey_image col-md-4 mt-md-4">
-              <%= link_to whiskey_path(whiskey) do %>
-                <%= image_tag whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
-              <% end %>
-            </div>
-
-            <div class="col-md-7 ml-2 mb-5">
-              <div class="mb-2">
-                <span class="mr-4">name</span>
-                <%= whiskey.name %>
-              </div>
-
-              <div class="mb-2">
-                <span class="mr-4">price</span>
-                <%= whiskey.price_range %>
-              </div>
-
-              <div class="taste_scent_graph">
-                <div>light</div>
-                <div class="graph1">
-                  <div style="padding-left: <%= whiskey.taste %>px;"></div>
-                  <div class="point"></div>
-                </div>
-                <div>rich</div>
-              </div>
-
-              <div class="taste_scent_graph">
-                <div>fruity</div>
-                <div class="graph2">
-                  <div style="padding-left: <%= whiskey.scent %>px;"></div>
-                  <div class="point"></div>
-                </div>
-                <div>smokey</div>
-              </div>
-
-              <div>cost performance</div>
-              <div>
-                <%= render "public/whiskeys/rate", whiskey: whiskey %>
-              </div>
-
-              <div class="mt-2 mb-1">tag</div>
-              <div>
-                <% if whiskey.tags.blank? %>
-                  <%= "タグはありません" %>
-                <% else %>
-                 #<%= whiskey.tags.map(&:tag).join(' #') %>
+        <% unless @whiskeys.blank? %>
+          <% @whiskeys.each do |whiskey| %>
+            <div class="row">
+              <div class="whiskey_image col-md-4 mt-md-4">
+                <%= link_to whiskey_path(whiskey) do %>
+                  <%= image_tag whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
                 <% end %>
               </div>
 
-              <div id="favorite_buttons_<%= whiskey.id %>">
-                <%= render "public/favorites/favorites", whiskey: whiskey %>
+              <div class="col-md-7 ml-2 mb-5">
+                <div class="mb-2">
+                  <span class="mr-4">name</span>
+                  <%= whiskey.name %>
+                </div>
+
+                <div class="mb-2">
+                  <span class="mr-4">price</span>
+                  <%= whiskey.price_range %>
+                </div>
+
+                <div class="taste_scent_graph">
+                  <div>light</div>
+                  <div class="graph1">
+                    <div style="padding-left: <%= whiskey.taste %>px;"></div>
+                    <div class="point"></div>
+                  </div>
+                  <div>rich</div>
+                </div>
+
+                <div class="taste_scent_graph">
+                  <div>fruity</div>
+                  <div class="graph2">
+                    <div style="padding-left: <%= whiskey.scent %>px;"></div>
+                    <div class="point"></div>
+                  </div>
+                  <div>smokey</div>
+                </div>
+
+                <div>cost performance</div>
+                <div>
+                  <%= render "public/whiskeys/rate", whiskey: whiskey %>
+                </div>
+
+                <div class="mt-2 mb-1">tag</div>
+                <div>
+                  <% if whiskey.tags.blank? %>
+                    <%= "タグはありません" %>
+                  <% else %>
+                   #<%= whiskey.tags.map(&:tag).join(' #') %>
+                  <% end %>
+                </div>
+
+                <div id="favorite_buttons_<%= whiskey.id %>">
+                  <%= render "public/favorites/favorites", whiskey: whiskey %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <h3 class="no_whiskey offset-sm-2 mt-5">投稿ははありません</h3>
         <% end %>
       </div>
     </div>
