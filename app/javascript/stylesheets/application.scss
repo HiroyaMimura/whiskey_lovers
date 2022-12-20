@@ -48,6 +48,16 @@ nav {
   margin-left: 70px;
 }
 
+.header_link {
+  padding: 10px 30px 10px 50px;
+}
+
+.header_link a {
+  font-size: 18px;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
 .admin_title {
   color: #FFFFFF;
   font-size: 26px;
@@ -62,8 +72,8 @@ nav {
 // お知らせ通知
 .circle {
   position: absolute;
-  margin-left: 90px;
-  margin-top: -18px;
+  margin-left: -22px;
+  margin-top: -25px;
   color: #ff9800;
 }
 
@@ -261,8 +271,8 @@ input[type="range"] {
 // お知らせ通知
 .circle {
   position: absolute;
-  padding-left: 10px;
-  margin-top: -33px;
+  margin-left: -23px;
+  margin-top: -25px;
   color: #ff9800;
 }
 
