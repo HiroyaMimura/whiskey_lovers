@@ -84,6 +84,7 @@ nav {
   margin: 4px 4px;
   padding: 2px 2px;
 }
+
 .tag a {
   color: #FFFFFF;
   text-decoration: none;
@@ -320,6 +321,10 @@ input[type="range"] {
 // 投稿やお気に入りがない場合のコメント
 .no_count {
   text-align: center;
+}
+
+.tag {
+  margin: 4px 4px;
 }
 
 }

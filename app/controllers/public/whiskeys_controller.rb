@@ -15,11 +15,13 @@ class Public::WhiskeysController < ApplicationController
   def new
     @whiskey = Whiskey.new
     @tag_list = Tag.new
+    @tag = Tag.all
   end
 
   def edit
     @whiskey = Whiskey.find(params[:id])
     @tag_list = @whiskey.tags.pluck(:tag).join(',')
+    @tag = Tag.all
     unless @whiskey.user_id == current_user.id
       flash[:notice] = "他の方の投稿は編集できません"
       redirect_to whiskeys_path
