@@ -3,6 +3,10 @@
     <h2 class="title">Sign up</h2>
 
     <div class="form-group d-flex justify-content-center">
+      <%= render "public/shared/error_messages", resource: resource %>
+    </div>
+
+    <div class="form-group d-flex justify-content-center">
       <%= flash[:notice] %>
     </div>
 
@@ -38,10 +42,6 @@
           <%= f.submit "Sign up", class:"link my-3 ml-5 text-white btn btn-outline-secondary" %>
         </div>
       <% end %>
-    </div>
-
-    <div class="form-group d-flex justify-content-center">
-      <%= render "public/shared/error_messages", resource: resource %>
     </div>
   </div>
 </div>
