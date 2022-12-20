@@ -308,6 +308,10 @@ input[type="range"] {
 
 @media screen and (max-width:576px) {
 
+.admin_title {
+  font-size: 15px;
+}
+
 .searches_form {
   display: flex;
   justify-content: center;
