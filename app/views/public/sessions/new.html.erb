@@ -3,6 +3,10 @@
     <h2 class="title">Log in</h2>
 
     <div class="form-group d-flex justify-content-center">
+      <%= flash[:notice] %>
+    </div>
+
+    <div class="form-group d-flex justify-content-center">
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <div class="field my-3">
           <%= f.label :"E-mail" %><br />
@@ -18,10 +22,6 @@
           <%= f.submit "Log in", class:"link my-3  text-white btn btn-outline-secondary" %>
         </p>
       <% end %>
-    </div>
-
-    <div class="form-group d-flex justify-content-center">
-      <%= flash[:notice] %>
     </div>
   </div>
 </div>
