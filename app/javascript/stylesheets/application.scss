@@ -245,6 +245,17 @@ input[type="range"] {
   margin: 40px 0;
 }
 
+.page-item.active .page-link {
+    background-color: #573e24;
+    border-color: #351e0a;
+}
+
+.page-link {
+    color: #351e0a;
+    background-color: #FFFFFF;
+    border: 1px solid #351e0a;
+}
+
 .contacts a {
   color: #000000;
 }
