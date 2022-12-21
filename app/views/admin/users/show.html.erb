@@ -6,15 +6,17 @@
         <div>
           <%= image_tag @user.get_profile_image.variant(resize_to_fill: [100, 100]), alt:"プロフィール画像" %>
 
-          <div class="mt-2">nickname</div>
+          <div class="mt-3">name</div>
           <p><%= @user.name %></p>
 
           <div>e-mail</div>
           <p><%= @user.email %></p>
 
-          <div>comments：(<%= @user.whiskey_comments.count %>)</div>
+          <div>reviews：(<%= @user.whiskeys.count %>)</div>
 
-          <div class="mt-2">registration status：
+          <div class="mt-3">comments：(<%= @user.whiskey_comments.count %>)</div>
+
+          <div class="mt-3">registration status：
             <% if @user.is_deleted == false %>
               有効
             <% else %>
