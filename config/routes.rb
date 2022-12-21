@@ -15,6 +15,8 @@ end
 
 scope module: :public do
 	root to:"homes#top"
+	get "services"=>"homes#services"
+	get "privacies"=>"homes#privacies"
   resources:whiskeys do
     resources:whiskey_comments, only: [:create, :destroy]
     resource:favorites, only: [:create, :destroy]

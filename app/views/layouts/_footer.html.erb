@@ -5,12 +5,19 @@
 
   <i class="fab fa-instagram fa-2x"></i>
 </div>
-
-<p class ="contacts text-center mt-3">
-  <% if user_signed_in? %>
-    <%= link_to "お問い合わせ", new_contacts_path %>
-  <% end %>
-</p>
+<div class="col-md-12 d-flex justify-content-center mx-auto py-3">
+  <div class ="contacts text-center">
+    <%= link_to "利用規約", services_path %>
+  </div>
+  <div class ="contacts text-center mx-4">
+    <%= link_to "プライバシーポリシー", privacies_path %>
+  </div>
+  <div class ="contacts text-center">
+    <% if user_signed_in? %>
+      <%= link_to "お問い合わせ", new_contacts_path %>
+    <% end %>
+  </div>
+</div>
 
 <div class="col-md-12 mx-auto text-center">
   <p>&copy;whiskey lovers</p>
