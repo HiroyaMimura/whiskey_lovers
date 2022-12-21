@@ -36,11 +36,11 @@ footer {
 }
 
 // ヘッダーのレイアウト
-nav {
+.nav {
   background-color: #372312;
 }
 
-.navbar {
+.header_navbar {
   padding: 0;
 }
 
@@ -70,7 +70,7 @@ nav {
   background-color: #573e24;
 }
 // お知らせ通知
-.circle {
+.check {
   position: absolute;
   margin-left: -22px;
   margin-top: -25px;
@@ -88,6 +88,13 @@ nav {
 .tag a {
   color: #FFFFFF;
   text-decoration: none;
+}
+
+.tag_menu {
+  background-color: #573e24;
+  border-color: gray;
+  border-radius: 5px;
+  padding: 0;
 }
 
 // 各ページの見出し
@@ -272,7 +279,7 @@ input[type="range"] {
 }
 
 // お知らせ通知
-.circle {
+.check {
   position: absolute;
   margin-left: -23px;
   margin-top: -25px;

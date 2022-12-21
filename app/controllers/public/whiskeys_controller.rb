@@ -37,7 +37,8 @@ class Public::WhiskeysController < ApplicationController
        @whiskey.save_tag(tag_list)
        redirect_to whiskeys_path
     else
-       render "new"
+      @tag = Tag.all
+      render "new"
     end
   end
 
@@ -54,6 +55,7 @@ class Public::WhiskeysController < ApplicationController
       @whiskey.save_tag(tag_list)
       redirect_to whiskey_path(@whiskey)
     else
+      @tag = Tag.all
       render "edit"
     end
   end

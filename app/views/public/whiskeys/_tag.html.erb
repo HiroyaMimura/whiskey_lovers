@@ -5,17 +5,29 @@
 
   <div>
     <h4 class="ml-4"><i class="fas fa-tag"></i>Tag</h4>
-    <div class="d-flex flex-wrap mb-5">
-      <% tag_list.each do |list|%>
-        <div class="tag">
-          <% unless admin_signed_in? %>
-            <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
-          <% else %>
-            <%= list.tag %>
-          <% end %>
-            <%="(#{list.whiskeys.count})" %>
-        </div>
-      <% end %>
-    </div>
+    <nav class="tag_menu navbar navbar-expand-sm ml-3">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <h5 class="text-white m-0">List<i class="far fa-caret-square-down ml-2"></i></h5>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto bg-white">
+          <div class="d-flex flex-wrap mb-5">
+            <% tag_list.each do |list|%>
+            <li class="nav-item">
+              <div class="tag">
+                <% unless admin_signed_in? %>
+                  <%=link_to list.tag,searches_tag_path(tag_id: list.id) %>
+                <% else %>
+                  <%= list.tag %>
+                <% end %>
+                  <%="(#{list.whiskeys.count})" %>
+              </div>
+              </li>
+            <% end %>
+          </div>
+        </ul>
+      </div>
+    </nav>
   </div>
 </div>

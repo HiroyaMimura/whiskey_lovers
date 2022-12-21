@@ -1,10 +1,10 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-expand-md navbar-dark">
+  <nav class="nav header_navbar navbar navbar-expand-md navbar-dark">
     <div class="container-fluid">
         <!--ユーザー用のヘッダー-->
         <% if user_signed_in? %>
         <div class="logo">
-          <a class="navbar" href="/whiskeys"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
+          <a class="header_navbar navbar" href="/whiskeys"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
         </div>
 
         <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
 
             <li class="header_link"><%= link_to "Notification", notifications_path %>
             <% if unchecked_notifications.any? %>
-             <div class="circle"><i class="fas fa-exclamation-triangle"></i></div>
+             <div class="check"><i class="fas fa-exclamation-triangle"></i></div>
             <% end %></li>
             <li class="header_link"><%= link_to "My page", user_path(current_user) %></li>
             <li class="header_link"><%= link_to "New post", new_whiskey_path %></li>
@@ -25,7 +25,7 @@
         <!--管理人のヘッダー-->
         <% elsif admin_signed_in? %>
         <div class="logo">
-          <a class="navbar" href="/admin"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
+          <a class="header_navbar navbar" href="/admin"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
         </div>
         <p class="admin_title">Administrator</p>
         <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
         </div>
         <% else %>
         <div class="logo">
-          <a class="navbar" href="/"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
+          <a class="header_navbar navbar" href="/"><%= image_tag 'logo.png', size: '80x80', class:"logo_size" %></a>
         </div>
         <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
