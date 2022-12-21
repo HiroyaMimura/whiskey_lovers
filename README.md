@@ -35,7 +35,7 @@
 
 ## 設計書
 - ER図<br>
-(https://user-images.githubusercontent.com/113226191/208879143-86b0f9c3-f3d1-4542-840c-60a79ae8fac0.svg)
+(https://user-images.githubusercontent.com/113226191/208880571-ebf1fade-e52c-4f46-968d-18f2aa14421b.svg)
 
 ## 開発環境
 - OS：Linux(CentOS)
