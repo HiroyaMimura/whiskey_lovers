@@ -20,7 +20,7 @@
           <% @favorites_list.each do |list| %>
             <div class="row">
               <div class="whiskey_image col-md-4">
-                <%= link_to whiskey_path(list) do %>
+                <%= link_to whiskey_path(list.whiskey_id) do %>
                   <%= image_tag list.whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
                 <% end %>
               </div>
