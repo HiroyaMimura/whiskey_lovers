@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
 * {
   padding: 0;
@@ -101,8 +102,6 @@ footer {
 .title {
   display: none;
   text-align: center;
-  padding-top: 20px;
-  margin-bottom: 30px;
   font-size: 45px;
   color: #7f6450;
 }
@@ -188,7 +187,7 @@ input[type="range"] {
   appearance: none;
   cursor: pointer; // カーソルを分かりやすく
   outline: none; // スライダーのアウトラインは目障りになるので消す
-  background: #e9d9cf; // バーの背景色
+  background: #e4d7bf; // バーの背景色
   height: 12px; // バーの高さ
   width: 270px; // スライダーの幅
   border-radius: 5px; // バーの端の丸み
@@ -330,7 +329,7 @@ input[type="range"] {
   height: 15px;
   width: 270px;
   margin: 4px 8px 0 14px;
-  background-color: #e9d9cf;
+  background-color: #e4d7bf;
   border-radius: 5px;
   display: flex;
 }
