@@ -2,7 +2,7 @@
 <div class="start_image">
   <div class="image">
     <%= flash[:notice] %>
-    <h2 class="title">Log in</h2>
+    <h1 class="text-center py-4">Log in</h1>
 
     <div class="form-group d-flex justify-content-center">
       <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
