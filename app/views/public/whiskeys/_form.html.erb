@@ -55,18 +55,18 @@
           <div class="field my-1">
             <%= f.label :"・taste" %><br>
             <div class="taste_scent_graph">
-              <div class="mr-1">light</div>
+              <div class="graph_light">light</div>
                 <div><%= f.range_field :taste, in: 0..250 %></div>
-              <div class="ml-2">rich</div>
+              <div class="ml-1">rich</div>
             </div>
           </div>
 
           <div class="field my-1">
             <%= f.label :"・scent" %><br>
             <div class="taste_scent_graph">
-              <div>fruity</div>
+              <div class="mr-1">fruity</div>
                 <div><%= f.range_field :scent, in: 0..250 %></div>
-              <div class="ml-2">smokey</div>
+              <div class="ml-1">smokey</div>
             </div>
           </div>
 
