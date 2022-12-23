@@ -5,7 +5,7 @@
   <div class="row">
     <%= render "public/users/profile", user: @user %>
 
-    <div class="col-sm-7 offset-sm-2 mb-sm-3">
+    <div class="col-sm-7 offset-md-2 mb-sm-3">
       <% unless @whiskeys.blank? %>
         <% @whiskeys.each do |whiskey| %>
           <div class="row">
