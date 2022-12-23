@@ -209,6 +209,17 @@ body {
   margin: 20px 0 0 50px;
 }
 
+.profile_area_admin {
+  display: flex;
+  justify-content: center;
+  width: 240px;
+  height: 450px;
+  background-color: #e4d7bf;
+  border-radius: 7px;
+  padding-top: 10px;
+  margin: 20px 0 30px 50px;
+}
+
 .name {
   margin-right: 59px;
 }
@@ -394,18 +405,11 @@ input[type="range"] {
   font-size: 15px;
 }
 
-.profile_area {
+.profile_area, .my_profile_area, .profile_area_admin {
   display: flex;
   justify-content: center;
-  margin: 15px auto;
+  margin: 20px auto;
 }
-
-.my_profile_area {
-  display: flex;
-  justify-content: center;
-  margin: 15px auto;
-}
-
 
 .searches_form {
   display: flex;
