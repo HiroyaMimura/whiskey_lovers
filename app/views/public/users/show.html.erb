@@ -1,94 +1,74 @@
 <%= flash[:notice] %>
 
 <h2 class="title">My page</h2>
-  <div class="container_fulid">
-    <div class="row">
-      <div class="profile col-sm-3 ml-sm-5 mt-sm-3">
-        <div>
-          <%= image_tag @user.get_profile_image.variant(resize_to_fill: [130, 130]), alt: "プロフィール画像" %>
+<div class="container_fulid">
+  <div class="row">
+    <%= render "public/users/profile", user: @user %>
 
-          <p class="mt-4"><%= @user.name %></p>
+    <div class="col-sm-7 offset-sm-2 mb-sm-3">
+      <% unless @whiskeys.blank? %>
+        <% @whiskeys.each do |whiskey| %>
+          <div class="row">
+            <div class="whiskey_image col-md-4 mt-md-4">
+              <%= link_to whiskey_path(whiskey) do %>
+                <%= image_tag whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
+              <% end %>
+            </div>
 
-          <div>Reviews：(<%= @user.whiskeys.count %>)</div>
+            <div class="col-md-7 ml-2 mb-5">
+              <div class="mb-2">
+                <span class="name">name</span>
+                <%= whiskey.name %>
+              </div>
 
-          <div>
-            <% if @user.name != "ゲストユーザー" %>
-             <%= link_to "プロフィール編集", edit_user_path(@user), class:"link my-3  text-white btn btn-sm btn-outline-secondary" %>
-            <% end %>
-          </div>
+              <div class="mb-2">
+                <span class="price">price</span>
+                <%= whiskey.price_range %>
+              </div>
 
-          <div>
-            <% if @user == current_user %>
-             <%= link_to "お気に入りリスト", users_user_favorites_path, class:"link my-3  text-white btn btn-sm btn-outline-secondary" %>
-            <% end %>
-          </div>
-          </div>
-      </div>
+              <div class="taste_scent_graph">
+                <div>light</div>
+                <div class="graph1">
+                  <div style="padding-left: <%= whiskey.taste %>px;"></div>
+                  <div class="point"></div>
+                </div>
+                <div>rich</div>
+              </div>
 
-      <div class="col-sm-8 ml-md-5 mb-sm-3">
-        <% unless @whiskeys.blank? %>
-          <% @whiskeys.each do |whiskey| %>
-            <div class="row">
-              <div class="whiskey_image col-md-4 mt-md-4">
-                <%= link_to whiskey_path(whiskey) do %>
-                  <%= image_tag whiskey.whiskey_image.variant(resize_to_fill: [260, 260]), alt: "ウイスキーの写真" %>
+              <div class="taste_scent_graph">
+                <div>fruity</div>
+                <div class="graph2">
+                  <div style="padding-left: <%= whiskey.scent %>px;"></div>
+                  <div class="point"></div>
+                </div>
+                <div>smokey</div>
+              </div>
+
+              <div>cost performance</div>
+              <div>
+                <%= render "public/whiskeys/rate", whiskey: whiskey %>
+              </div>
+
+              <div class="mt-2 mb-1">tag</div>
+              <div>
+                <% if whiskey.tags.blank? %>
+                  <%= "タグはありません" %>
+                <% else %>
+                 #<%= whiskey.tags.map(&:tag).join(' #') %>
                 <% end %>
               </div>
 
-              <div class="col-md-7 ml-2 mb-5">
-                <div class="mb-2">
-                  <span class="name">name</span>
-                  <%= whiskey.name %>
-                </div>
-
-                <div class="mb-2">
-                  <span class="price">price</span>
-                  <%= whiskey.price_range %>
-                </div>
-
-                <div class="taste_scent_graph">
-                  <div>light</div>
-                  <div class="graph1">
-                    <div style="padding-left: <%= whiskey.taste %>px;"></div>
-                    <div class="point"></div>
-                  </div>
-                  <div>rich</div>
-                </div>
-
-                <div class="taste_scent_graph">
-                  <div>fruity</div>
-                  <div class="graph2">
-                    <div style="padding-left: <%= whiskey.scent %>px;"></div>
-                    <div class="point"></div>
-                  </div>
-                  <div>smokey</div>
-                </div>
-
-                <div>cost performance</div>
-                <div>
-                  <%= render "public/whiskeys/rate", whiskey: whiskey %>
-                </div>
-
-                <div class="mt-2 mb-1">tag</div>
-                <div>
-                  <% if whiskey.tags.blank? %>
-                    <%= "タグはありません" %>
-                  <% else %>
-                   #<%= whiskey.tags.map(&:tag).join(' #') %>
-                  <% end %>
-                </div>
-
-                <div id="favorite_buttons_<%= whiskey.id %>">
-                  <%= render "public/favorites/favorites", whiskey: whiskey %>
-                </div>
+              <div id="favorite_buttons_<%= whiskey.id %>">
+                <%= render "public/favorites/favorites", whiskey: whiskey %>
               </div>
             </div>
-          <% end %>
-        <% else %>
-          <h3 class="no_count offset-sm-2 mt-5">投稿ははありません</h3>
+          </div>
         <% end %>
-      </div>
+      <% else %>
+        <h3 class="no_count offset-sm-2 mt-5">投稿ははありません</h3>
+      <% end %>
     </div>
   </div>
+</div>
 
 <%= paginate @whiskeys %>

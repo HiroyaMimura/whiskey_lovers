@@ -77,12 +77,28 @@ footer {
   color: #ff9800;
 }
 
+.searches_form {
+	height: 600px;
+	width: 280px;
+	position: sticky;
+	top: 20px;
+	overflow-y: scroll;
+	background-color: #e4d7bf;
+  border-radius: 7px;
+  padding: 20px 8px;
+  margin: 0 20px;
+}
+
 .tag {
   color: #FFFFFF;
   background-color: #573e24;
   border-radius: 20px;
   margin: 4px 4px;
   padding: 2px 2px;
+}
+
+.tag_list {
+  background-color: #e4d7bf;
 }
 
 .tag a {
@@ -105,6 +121,11 @@ footer {
   margin-bottom: 30px;
   font-size: 45px;
   color: #7f6450;
+}
+
+.search_word {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 // 新規登録、ログイン画面
@@ -164,6 +185,28 @@ body {
   // 半角英数折返しの設定
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+.profile_area {
+  display: flex;
+  justify-content: center;
+  width: 160px;
+  height: 300px;
+  background-color: #e4d7bf;
+  border-radius: 7px;
+  padding-top: 10px;
+  margin: 20px 0 0 30px;
+}
+
+.my_profile_area {
+  display: flex;
+  justify-content: center;
+  width: 160px;
+  height: 350px;
+  background-color: #e4d7bf;
+  border-radius: 7px;
+  padding-top: 10px;
+  margin: 20px 0 0 50px;
 }
 
 .name {
@@ -351,14 +394,29 @@ input[type="range"] {
   font-size: 15px;
 }
 
-.searches_form {
+.profile_area {
   display: flex;
   justify-content: center;
+  margin: 15px auto;
 }
 
-.profile {
+.my_profile_area {
   display: flex;
   justify-content: center;
+  margin: 15px auto;
+}
+
+
+.searches_form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+	height: auto;
+	position: static;
+	background-color: #e4d7bf;
+  border-radius: 7px;
+  padding: 8px;
+  margin: 0 0 20px 0;
 }
 
 // 投稿やお気に入りがない場合のコメント

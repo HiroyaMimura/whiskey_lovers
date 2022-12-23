@@ -1,4 +1,4 @@
-<div class="searches_form col-sm-3 ml-md-4 mx-2 pl-md-5 mb-3">
+<div class="searches_form">
   <% unless admin_signed_in? %>
     <div><%= render 'layouts/searches_form' %></div>
   <% end %>
@@ -11,7 +11,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto bg-white">
+        <ul class="tag_list navbar-nav mr-auto">
           <div class="d-flex flex-wrap mb-5">
             <% tag_list.each do |list|%>
             <li class="nav-item">
