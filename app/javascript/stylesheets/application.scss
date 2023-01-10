@@ -254,6 +254,7 @@ input[type="range"] {
     height: 18px; // 高さ
     border-radius: 5px; // 円形に
   }
+  
   // -moz-向けのつまみ
   &::-moz-range-thumb {
     background: #351e0a; // 背景色
@@ -262,6 +263,7 @@ input[type="range"] {
     border-radius: 5px; // 円形に
     border: none; // デフォルトの線を消す
   }
+  
   // Firefoxで点線が周りに表示されてしまう問題の解消
   &::-moz-focus-outer {
     border: 0;
