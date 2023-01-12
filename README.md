@@ -38,7 +38,7 @@
 (https://user-images.githubusercontent.com/113226191/208880571-ebf1fade-e52c-4f46-968d-18f2aa14421b.svg)
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
