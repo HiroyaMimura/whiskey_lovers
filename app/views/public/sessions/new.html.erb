@@ -8,19 +8,23 @@
 
     <div class="form-group d-flex justify-content-center">
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-        <div class="field my-3">
+        <div class="field ml-5 my-3">
           <%= f.label :"E-mail" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
-        <div class="field my-3">
+        <div class="field ml-5 my-3">
           <%= f.label :"Password" %><br />
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
 
-        <p class="text-center">
-          <%= f.submit "Log in", class:"link my-3  text-white btn btn-outline-secondary" %>
-        </p>
+        <div class="field mt-4 mb-2">
+          <%= recaptcha_tags %>
+        </div>
+
+        <div class="ml-5">
+          <%= f.submit "Log in", class:"link my-3 ml-5 text-white btn btn-outline-secondary" %>
+        </div>
       <% end %>
     </div>
   </div>
