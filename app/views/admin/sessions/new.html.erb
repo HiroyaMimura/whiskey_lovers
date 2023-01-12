@@ -7,7 +7,7 @@
     <div class="form-group d-flex justify-content-center">
       <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
         <div class="field my-3">
-          <%= f.label :"E-mail" %><br />
+          <%= f.label :"Email" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
