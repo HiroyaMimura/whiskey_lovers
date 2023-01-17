@@ -35,7 +35,6 @@ footer {
   bottom: 0;
 }
 
-// ヘッダーのレイアウト
 .nav {
   background-color: #372312;
 }
@@ -113,7 +112,6 @@ footer {
   padding: 0;
 }
 
-// 各ページの見出し
 .title {
   display: none;
   text-align: center;
@@ -137,7 +135,7 @@ footer {
   background-position: center;
 }
 
-//編集、退会画面の背景
+//編集、退会画面
 .user_page_image {
   width: 100%;
   height: 100vh;
@@ -312,7 +310,7 @@ input[type="range"] {
   font-size: 28px;
 }
 
-// bootstrapのページネーション補足
+// bootstrapのページネーション
 .pagination {
   background-color: white;
   justify-content: center;
