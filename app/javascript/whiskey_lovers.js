@@ -9,5 +9,5 @@ $(document).on('turbolinks:load', function(){
 });
 
 $(document).on('turbolinks:load', function(){
-  $('.title').slideDown(800)
+  $('.title').slideDown(700)
 });
