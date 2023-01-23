@@ -4,7 +4,7 @@
   <div class="row ml-md-3 m-0">
     <%= render "public/whiskeys/tag", tag_list: @tag_list %>
 
-    <div class="col-sm-7 offset-md-1 mb-sm-3">
+    <div class="col-sm-7 offset-md-1 mb-sm-3 px-0">
       <% unless whiskeys_search.blank? %>
         <% whiskeys_search.each do |whiskey| %>
           <div class="row">
