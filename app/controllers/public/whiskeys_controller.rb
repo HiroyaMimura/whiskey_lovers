@@ -1,5 +1,6 @@
 class Public::WhiskeysController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def index
     @whiskeys = Whiskey.order('created_at DESC').page(params[:page]).per(5)
@@ -22,10 +23,6 @@ class Public::WhiskeysController < ApplicationController
     @whiskey = Whiskey.find(params[:id])
     @tag_list = @whiskey.tags.pluck(:tag).join(',')
     @tag = Tag.all
-    unless @whiskey.user_id == current_user.id
-      flash[:notice] = "他の方の投稿は編集できません"
-      redirect_to whiskeys_path
-    end
   end
 
   def create
@@ -70,6 +67,14 @@ class Public::WhiskeysController < ApplicationController
 
   def whiskey_params
     params.require(:whiskey).permit(:name,:impression,:whiskey_image,:taste,:scent,:price_range,:performance)
+  end
+  
+  def ensure_user
+    unless admin_signed_in?
+      @whiskeys = current_user.whiskeys
+      @whiskey = @whiskeys.find_by(id: params[:id])
+      redirect_to whiskeys_path unless @whiskey
+    end
   end
 
 end

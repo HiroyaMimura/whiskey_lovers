@@ -1,5 +1,6 @@
 class Public::WhiskeyCommentsController < ApplicationController
   before_action :authenticate, only: [:user, :admin]
+  before_action :ensure_user, only: [:destroy]
 
   def create
     @whiskey = Whiskey.find(params[:whiskey_id])
@@ -22,6 +23,14 @@ class Public::WhiskeyCommentsController < ApplicationController
   private
     def comment_params
       params.require(:whiskey_comment).permit(:comment)
+    end
+    
+    def ensure_user
+      unless admin_signed_in?
+        @comments = current_user.whiskey_comments
+        @whiskey_comment = @comments.find_by(id: params[:id])
+        redirect_to whiskeys_path unless @whiskey_comment
+      end
     end
 
 end
